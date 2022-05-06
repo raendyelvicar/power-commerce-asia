@@ -1,18 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <TransactionCard status="Menunggu Konfirmasi"></TransactionCard>
+    <TransactionCard status="Dalam Proses"></TransactionCard>
+    <TransactionCard status="Pengiriman"></TransactionCard>
+    <TransactionCard status="Pengiriman"></TransactionCard>
+    <TransactionCard status="Pengiriman"></TransactionCard>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import TransactionCard from "@/components/TransactionCard";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    TransactionCard,
   },
 };
 </script>
