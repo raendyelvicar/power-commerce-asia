@@ -14,13 +14,17 @@ export default {
   },
   methods: {
     setColor() {
-      console.log(this.status);
       if (this.status === "Menunggu Konfirmasi") {
-        this.bgColor = "grey";
-      } else if (this.status === "Dalam Proses") {
-        this.bgColor = "orange";
-      } else {
-        this.bgColor = "#0dc400";
+        this.bgColor = "#929292";
+      } else if (
+        this.status === "Dalam Proses" ||
+        this.status === "Pengiriman"
+      ) {
+        this.bgColor = "#F5831F";
+      } else if (this.status === "Selesai") {
+        this.bgColor = "#015CA1";
+      } else if (this.status === "Dibatalkan") {
+        this.bgColor = "#FF0000";
       }
     },
   },

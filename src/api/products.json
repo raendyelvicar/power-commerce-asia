@@ -1,0 +1,110 @@
+[
+  {
+    "createdAt": "2022-05-08T07:31:11.078Z",
+    "name": "Bespoke Steel Salad",
+    "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    "image": "http://loremflickr.com/640/480",
+    "price": "123.500",
+    "stock": 18,
+    "id": "1"
+  },
+  {
+    "createdAt": "2022-05-09T06:43:23.587Z",
+    "name": "Fantastic Wooden Soap",
+    "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+    "image": "http://loremflickr.com/640/480",
+    "price": "87.000",
+    "stock": 91,
+    "id": "2"
+  },
+  {
+    "createdAt": "2022-05-08T23:57:47.078Z",
+    "name": "Incredible Soft Mouse",
+    "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+    "image": "http://loremflickr.com/640/480",
+    "price": "127.000",
+    "stock": 91,
+    "id": "3"
+  },
+  {
+    "createdAt": "2022-05-08T14:06:06.975Z",
+    "name": "Gorgeous Fresh Car",
+    "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+    "image": "http://loremflickr.com/640/480",
+    "price": "449.000",
+    "stock": 35,
+    "id": "4"
+  },
+  {
+    "createdAt": "2022-05-08T22:25:59.735Z",
+    "name": "Generic Concrete Chair",
+    "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+    "image": "http://loremflickr.com/640/480",
+    "price": "549.000",
+    "stock": 29,
+    "id": "5"
+  },
+  {
+    "createdAt": "2022-05-08T20:22:16.812Z",
+    "name": "Intelligent Concrete Fish",
+    "description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+    "image": "http://loremflickr.com/640/480",
+    "price": "776.000",
+    "stock": 73,
+    "id": "6"
+  },
+  {
+    "createdAt": "2022-05-08T22:04:06.834Z",
+    "name": "Generic Wooden Computer",
+    "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+    "image": "http://loremflickr.com/640/480",
+    "price": "478.000",
+    "stock": 94,
+    "id": "7"
+  },
+  {
+    "createdAt": "2022-05-08T16:32:17.207Z",
+    "name": "Electronic Plastic Car",
+    "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    "image": "http://loremflickr.com/640/480",
+    "price": "202.000",
+    "stock": 4,
+    "id": "8"
+  },
+  {
+    "createdAt": "2022-05-08T20:09:47.672Z",
+    "name": "Fantastic Rubber Chips",
+    "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+    "image": "http://loremflickr.com/640/480",
+    "price": "1.530.000",
+    "stock": 79,
+    "id": "9"
+  },
+  {
+    "createdAt": "2022-05-08T20:16:08.348Z",
+    "name": "Modern Frozen Table",
+    "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+    "image": "http://loremflickr.com/640/480",
+    "price": "861.000",
+    "stock": 29,
+    "id": "10"
+  },
+  {
+    "createdAt": "2022-05-08T21:15:58.728Z",
+    "name": "Generic Concrete Tuna",
+    "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+    "image": "http://loremflickr.com/640/480",
+    "price": "834.000",
+    "stock": 21,
+    "id": "11"
+  },
+  {
+    "createdAt": "2022-05-09T05:54:32.430Z",
+    "name": "Incredible Frozen Gloves",
+    "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+    "image": "http://loremflickr.com/640/480",
+    "price": "75.000",
+    "stock": 37,
+    "id": "12"
+  }
+]

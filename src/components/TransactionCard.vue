@@ -2,7 +2,7 @@
   <div class="transaction-card">
     <div class="card-header">
       <div class="header-left">
-        <h4 style="font-weight: 700; margin-right: 10px">KMZWAY87AA</h4>
+        <h4 style="font-weight: 700; margin-right: 10px">{{ orderId }}</h4>
         <p style="font-weight: 500; color: grey">22 Apr 2022</p>
       </div>
       <TransactionStatus :status="status" />
@@ -14,24 +14,45 @@
           <img src="@/assets/images/product_1512983332_Ellips_H_800x800.jpg" />
         </div>
         <div class="card-desc">
-          <p class="product-name">Ellips with Hair Smoothing</p>
-          <p class="product-amount">1 CTN</p>
+          <p class="product-name">{{ product[0].name }}</p>
+          <p class="product-amount">{{ amount }} CTN</p>
           <p class="product-size">1+ Produk Lainnya</p>
         </div>
       </div>
-      <div class="total-purchase">Total Pembayaran <span>Rp 720.000</span></div>
+      <div class="total-purchase">
+        Total Pembayaran <span>Rp {{ product[0].price }}</span>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import TransactionStatus from "@/components/TransactionStatus";
-
+import axios from "axios";
 export default {
   name: "TransactionCard",
+  props: ["productId", "orderId", "amount", "status"],
   components: {
     TransactionStatus,
   },
-  props: ["status"],
+  data() {
+    return {
+      product: [],
+    };
+  },
+  methods: {
+    getProductById() {
+      axios
+        .get(
+          `https://626b682ce5274e6664cba68e.mockapi.io/api/v1/products/${this.productId}`
+        )
+        .then((response) => {
+          this.product.push(response.data);
+        });
+    },
+  },
+  mounted() {
+    this.getProductById();
+  },
 };
 </script>
 <style>
@@ -79,7 +100,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .card-desc .product-name {
@@ -92,7 +113,7 @@ img {
 
 .card-body .total-purchase {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .card-body .total-purchase {
   font-size: 14px;
