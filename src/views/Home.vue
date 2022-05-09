@@ -1,11 +1,19 @@
 <template>
   <div class="home">
-    <div class="filter-section">
-      <button class="filter active" @click="filterTransactionsByStatus('all')">
+    <div id="filter-section">
+      <button
+        class="filter active"
+        id="all"
+        @click="filterTransactionsByStatus('all')"
+      >
         Semua
       </button>
       <div v-for="item in status" :key="item.id">
-        <button class="filter" @click="filterTransactionsByStatus(item)">
+        <button
+          class="filter"
+          :id="item"
+          @click="filterTransactionsByStatus(item)"
+        >
           {{ item }}
         </button>
       </div>
@@ -42,7 +50,7 @@ export default {
         "Dibatalkan",
       ],
       transactions: [],
-      filterState: false,
+      activeTab: "",
     };
   },
   methods: {
@@ -54,6 +62,21 @@ export default {
         });
     },
     filterTransactionsByStatus(status) {
+      // Get the container element
+      var btnContainer = document.getElementById("filter-section");
+
+      // Get all buttons with class="btn" inside the container
+      var btns = btnContainer.getElementsByClassName("filter");
+
+      // Loop through the buttons and add the active class to the current/clicked button
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+
       if (status == "all") {
         this.getAllTransactions();
       } else {
@@ -74,7 +97,7 @@ export default {
 </script>
 
 <style>
-.filter-section {
+#filter-section {
   width: 70%;
   margin: auto;
   display: flex;
