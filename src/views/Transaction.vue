@@ -102,7 +102,8 @@ export default {
           this.className += " active";
         });
 
-        this.showedItems = [];
+        this.transactions = [];
+        this.pagination.showedItems = [];
       }
 
       if (status == "all") {
