@@ -60,7 +60,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   margin: auto;
   margin-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
