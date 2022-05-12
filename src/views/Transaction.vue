@@ -1,6 +1,6 @@
 <template>
   <div class="transaction">
-    <h2 class="title">Transaction</h2>
+    <h2 class="title">Transaksi</h2>
     <div id="filter-section">
       <button
         class="filter active"
@@ -22,7 +22,7 @@
     <div class="indicator" :class="[isLoading ? '' : 'hidden']">
       <a-spin :indicator="indicator" />
     </div>
-    <div v-for="item in transactions" :key="item.id">
+    <div v-for="item in pagination.showedItems" :key="item.id">
       <TransactionCard
         :orderId="item.order_id"
         :amount="item.amount"
@@ -32,9 +32,13 @@
     </div>
     <div class="pagination flex justify-center items-center">
       <a-pagination
-        :default-current="6"
-        :total="500"
         :class="[isLoading ? 'hidden' : '']"
+        v-model="pagination.current"
+        :defaultCurrent="1"
+        :pageSize="pagination.pageSize"
+        :total="pagination.totalCount"
+        @change="onPageChange"
+        @show-size-change="onShowSizeChange"
       />
     </div>
   </div>
@@ -63,6 +67,13 @@ export default {
       isLoading: true,
       transactions: [],
       indicator: <a-icon type="loading" style="font-size: 24px" spin />,
+      pagination: {
+        totalCount: 0,
+        pageSize: 20,
+        current: 1,
+        totalPage: 0,
+        showedItems: [],
+      },
     };
   },
   methods: {
@@ -71,6 +82,7 @@ export default {
         .get(`https://626b682ce5274e6664cba68e.mockapi.io/api/v1/transactions`)
         .then((response) => {
           this.transactions = response.data;
+          this.setPagination(this.transactions);
           this.isLoading = false;
         });
     },
@@ -90,7 +102,7 @@ export default {
           this.className += " active";
         });
 
-        this.transactions = [];
+        this.showedItems = [];
       }
 
       if (status == "all") {
@@ -102,8 +114,32 @@ export default {
           )
           .then((response) => {
             this.transactions = response.data;
+            this.setPagination(this.transactions);
             this.isLoading = false;
           });
+      }
+    },
+    setPagination(data) {
+      const paginate = this.pagination;
+
+      paginate.totalCount = data.length;
+      paginate.totalPage = Math.ceil(paginate.totalCount / paginate.pageSize);
+
+      if (paginate.totalCount < 20) {
+        paginate.showedItems = data.slice(0, paginate.totalCount);
+      } else if (paginate.totalCount > 20) {
+        let index = paginate.pageSize * (paginate.current - 1);
+
+        if (paginate.current === 1) {
+          paginate.showedItems = data.slice(0, paginate.pageSize);
+        } else if (paginate.current === paginate.totalPage) {
+          paginate.showedItems = data.slice(index);
+        } else {
+          paginate.showedItems = data.slice(
+            index,
+            paginate.pageSize * paginate.current
+          );
+        }
       }
     },
     dragToScroll() {
@@ -134,6 +170,13 @@ export default {
         slider.scrollLeft = scrollLeft - walk;
         console.log(walk);
       });
+    },
+    onPageChange(page) {
+      this.pagination.current = page;
+      this.getAllTransactions();
+    },
+    onShowSizeChange(current, pageSize) {
+      console.log(current, pageSize);
     },
   },
   mounted() {
@@ -214,5 +257,11 @@ export default {
   color: #015ca1;
   border-color: 1px #015ca1 solid;
   background-color: #b0dfe5;
+}
+
+@media screen and (max-width: 480px) {
+  .transaction {
+    width: 95%;
+  }
 }
 </style>
