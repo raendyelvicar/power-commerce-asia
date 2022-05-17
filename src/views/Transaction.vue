@@ -260,7 +260,7 @@ export default {
   background-color: #b0dfe5;
 }
 
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   .transaction {
     width: 95%;
   }

@@ -23,20 +23,30 @@
         Total Pembayaran <span>Rp {{ product[0].price }}</span>
       </div>
     </div>
+    <div
+      class="btn-container"
+      v-if="status === 'Pengiriman' || status === 'Selesai'"
+    >
+      <Button :cta="cta"></Button>
+    </div>
   </div>
 </template>
 <script>
 import TransactionStatus from "@/components/TransactionStatus";
+import Button from "@/components/Button";
 import axios from "axios";
+
 export default {
   name: "TransactionCard",
   props: ["productId", "orderId", "amount", "status"],
   components: {
     TransactionStatus,
+    Button,
   },
   data() {
     return {
       product: [],
+      cta: "",
     };
   },
   methods: {
@@ -49,9 +59,17 @@ export default {
           this.product.push(response.data);
         });
     },
+    setCta() {
+      if (this.status === "Selesai") {
+        this.cta = "Beli Lagi";
+      } else if (this.status === "Pengiriman") {
+        this.cta = "Pesanan Diterima";
+      }
+    },
   },
   mounted() {
     this.getProductById();
+    this.setCta();
   },
 };
 </script>
@@ -112,15 +130,15 @@ img {
   color: grey;
 }
 
-.card-body .total-purchase {
+.total-purchase {
   display: flex;
   align-items: flex-end;
 }
-.card-body .total-purchase {
+
+.total-purchase {
   font-size: 14px;
 }
-
-.card-body .total-purchase span {
+.total-purchase span {
   color: orange;
   font-weight: 700;
   margin-left: 10px;
@@ -132,5 +150,22 @@ img {
   width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+
+  .total-purchase {
+    flex-direction: column;
+    align-self: flex-end;
+  }
 }
 </style>
