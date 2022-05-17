@@ -30,12 +30,12 @@
       </div>
     </div>
     <div class="btn-container">
-      <Button cta="Lihat Cara Bayar"></Button>
+      <Button cta="Lihat Cara Bayar" url="/how-to-pay"></Button>
     </div>
   </div>
 </template>
 <script>
-import Button from "@/components/Button";
+import Button from "@/components/Buttons/Button";
 import axios from "axios";
 
 export default {

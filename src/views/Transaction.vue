@@ -1,6 +1,6 @@
 <template>
   <div class="transaction">
-    <h2 class="title">Transaksi</h2>
+    <h2 class="title text-2xl">Transaksi</h2>
     <div id="filter-section">
       <button
         class="filter active"
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import TransactionCard from "@/components/TransactionCard";
-import FilterComponent from "@/components/FilterComponent";
+import TransactionCard from "@/components/Cards/TransactionCard";
+import FilterComponent from "@/components/Filter/FilterComponent";
 import axios from "axios";
 
 export default {

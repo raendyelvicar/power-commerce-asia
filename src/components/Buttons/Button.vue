@@ -1,12 +1,17 @@
 <template lang="">
-  <button class="button">
+  <button class="button" @click="redirectToUrl">
     {{ cta }}
   </button>
 </template>
 <script>
 export default {
   name: "Button",
-  props: ["cta"],
+  props: ["cta", "url"],
+  methods: {
+    redirectToUrl() {
+      window.location.href = this.url;
+    },
+  },
 };
 </script>
 <style>

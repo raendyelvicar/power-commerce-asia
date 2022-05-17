@@ -37,8 +37,8 @@
   </div>
 </template>
 <script>
-import TransactionStatus from "@/components/TransactionStatus";
-import Button from "@/components/Button";
+import TransactionStatus from "@/components/Tags/TransactionStatus";
+import Button from "@/components/Buttons/Button";
 import axios from "axios";
 
 export default {
