@@ -1,23 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Transaction from "../views/Transaction.vue";
+import PaymentList from "../views/PaymentList.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/transactions",
     name: "Transaction",
     component: Transaction,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/payment-list",
+    name: "PaymentList",
+    component: PaymentList,
   },
 ];
 
