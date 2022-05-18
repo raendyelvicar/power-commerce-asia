@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/transactions",
+    path: "/",
     name: "Transaction",
     component: Transaction,
   },
