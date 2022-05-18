@@ -18,7 +18,40 @@
           {{ item }}
         </button>
       </div>
+
+      <button
+        class="desktop pending-payment font-medium text-red"
+        @click="redirectToUrl"
+      >
+        <Wallet
+          color="#ff0000"
+          height="14px"
+          width="14px"
+          style="margin-right: 5px"
+        />Menunggu Pembayaran ({{ count }})
+      </button>
     </div>
+    <button
+      class="mobile pending-payment font-bold text-black"
+      @click="redirectToUrl"
+    >
+      <div
+        style="
+          height: 25px;
+          width: 25px;
+          background-color: #dbdbdb;
+          border-radius: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+        "
+      >
+        <Wallet color="#015CA1" height="14px" width="14px" />
+      </div>
+      Menunggu Pembayaran ({{ count }})
+    </button>
+
     <div class="indicator" :class="[isLoading ? '' : 'hidden']">
       <a-spin :indicator="indicator" />
     </div>
@@ -47,6 +80,7 @@
 <script>
 import TransactionCard from "@/components/Cards/TransactionCard";
 import FilterComponent from "@/components/Filter/FilterComponent";
+import Wallet from "@/components/Icons/Wallet";
 import axios from "axios";
 
 export default {
@@ -54,6 +88,7 @@ export default {
   components: {
     TransactionCard,
     FilterComponent,
+    Wallet,
   },
   data() {
     return {
@@ -65,6 +100,7 @@ export default {
         "Dibatalkan",
       ],
       isLoading: true,
+      count: 0,
       transactions: [],
       indicator: <a-icon type="loading" style="font-size: 24px" spin />,
       pagination: {
@@ -119,6 +155,15 @@ export default {
             this.isLoading = false;
           });
       }
+    },
+    getCountPendingPayment() {
+      axios
+        .get(
+          `https://626b682ce5274e6664cba68e.mockapi.io/api/v1/transactions?filter=Menunggu Konfirmasi`
+        )
+        .then((response) => {
+          this.count = response.data.length;
+        });
     },
     setPagination(data) {
       const paginate = this.pagination;
@@ -179,10 +224,14 @@ export default {
     onShowSizeChange(current, pageSize) {
       console.log(current, pageSize);
     },
+    redirectToUrl() {
+      window.location.href = "/payment-list";
+    },
   },
   mounted() {
     this.getAllTransactions();
     this.dragToScroll();
+    this.getCountPendingPayment();
   },
 };
 </script>
@@ -225,6 +274,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  margin-bottom: 20px;
 
   overflow-x: scroll;
   overflow-y: hidden;
@@ -244,13 +294,13 @@ export default {
 }
 
 .filter {
-  color: #929292;
-  margin-right: 10px;
   padding: 8px 12px;
   border-radius: 10px;
+  cursor: pointer;
+  color: #929292;
+  margin-right: 10px;
   border: 1px #929292 solid;
   opacity: 0.5;
-  cursor: pointer;
 }
 
 .filter.active {
@@ -260,9 +310,48 @@ export default {
   background-color: #b0dfe5;
 }
 
+.pending-payment {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .transaction {
     width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* CSS */
+  .mobile.pending-payment {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .desktop.pending-payment {
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ff0000;
+    border: 1px #ff0000 solid;
+    background-color: #ffe8ec;
+
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
   }
 }
 </style>

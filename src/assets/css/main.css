@@ -124,8 +124,6 @@ p{
     align-items:flex-end;
 }
 
-
-
 .m-auto{
     margin:auto;
 }
@@ -189,3 +187,14 @@ p{
 .bg-pink{
     background-color:#FFE8E8;
 }
+
+.mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .desktop{
+        display: none;
+    }
+}
+

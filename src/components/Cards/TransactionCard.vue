@@ -21,7 +21,7 @@
           <p class="product-size text-sm font-regular">1+ Produk Lainnya</p>
         </div>
       </div>
-      <div class="total-purchase font-medium text-sm">
+      <div class="total-purchase font-medium text-sm desktop">
         Total Pembayaran
         <span class="text-base text-orange font-bold"
           >Rp{{ product[0].price }}</span
@@ -29,10 +29,24 @@
       </div>
     </div>
     <div
-      class="btn-container"
+      class="btn-container desktop"
       v-if="status === 'Pengiriman' || status === 'Selesai'"
     >
       <Button :cta="cta"></Button>
+    </div>
+    <div class="mobile">
+      <div class="total-purchase font-medium text-sm">
+        Total Pembayaran
+        <span class="text-base text-orange font-bold"
+          >Rp{{ product[0].price }}</span
+        >
+      </div>
+      <div
+        class="btn-container"
+        v-if="status === 'Pengiriman' || status === 'Selesai'"
+      >
+        <Button :cta="cta"></Button>
+      </div>
     </div>
   </div>
 </template>
@@ -86,8 +100,8 @@ export default {
   width: 100%;
   margin: auto;
   margin-bottom: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   padding: 20px;
   border-radius: 10px;
 }
@@ -146,14 +160,52 @@ img {
   align-items: flex-end;
 }
 
+.mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
-  .desktop {
-    display: none;
+  .transaction-card {
+    padding: 10px;
+  }
+
+  .header-left {
+    flex-direction: column;
+  }
+
+  .header-left h4 {
+    margin: 0;
+  }
+
+  .header-left p {
+    font-size: 0.75rem;
+  }
+
+  .line {
+    margin: 10px;
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .mobile .total-purchase {
+    align-items: flex-start;
+  }
+
+  .mobile .total-purchase span {
+    margin-left: 0;
   }
 
   .total-purchase {
     flex-direction: column;
     align-self: flex-end;
+  }
+  .desktop {
+    display: none;
   }
 }
 </style>

@@ -29,4 +29,10 @@ export default {
 .button:hover {
   background-color: #b0dfe5;
 }
+
+@media only screen and (max-width: 600px) {
+  .button {
+    padding: 5px 10px;
+  }
+}
 </style>
