@@ -2,7 +2,12 @@
   <div class="payment-card">
     <div class="card-header">
       <div class="header-left">
-        <img />
+        <Wallet
+          color="#015CA1"
+          height="20px"
+          width="20px"
+          style="margin-right: 10px"
+        />
         <div>
           <span class="text-sm text-grey">Nomor Order</span>
           <p class="text-base font-bold">KMZWAY87AA</p>
@@ -30,12 +35,17 @@
       </div>
     </div>
     <div class="btn-container">
+      <div class="mobile total-purchase font-medium text-sm">
+        Total Pembayaran
+        <span class="text-base text-orange font-bold">Rp1.890.000</span>
+      </div>
       <Button cta="Lihat Cara Bayar" url="/how-to-pay"></Button>
     </div>
   </div>
 </template>
 <script>
 import Button from "@/components/Buttons/Button";
+import Wallet from "@/components/Icons/Wallet";
 import axios from "axios";
 
 export default {
@@ -43,6 +53,7 @@ export default {
   props: ["paymentInformation"],
   components: {
     Button,
+    Wallet,
   },
 };
 </script>
@@ -76,6 +87,7 @@ export default {
 .card-header .header-left {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 img {
@@ -101,6 +113,10 @@ img {
   align-items: flex-end;
 }
 
+.btn-container .mobile.total-purchase {
+  display: none;
+}
+
 .total-purchase span {
   margin-left: 10px;
 }
@@ -123,10 +139,29 @@ img {
   .desktop {
     display: none;
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 10px;
+  }
 
   .total-purchase {
+    display: none;
+  }
+
+  .btn-container .mobile.total-purchase {
+    display: flex;
     flex-direction: column;
-    align-self: flex-end;
+    align-items: flex-start;
+  }
+
+  .btn-container .mobile.total-purchase span {
+    margin-left: 0;
   }
 }
 </style>
