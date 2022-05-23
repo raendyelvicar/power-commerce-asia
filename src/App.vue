@@ -1,9 +1,21 @@
 <template>
   <div id="app font-open-sans">
-    <div id="nav"></div>
+    <div id="nav">
+      <LanguageSwitcher />
+    </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import LanguageSwitcher from "@/components/Dropdown/LanguageSwitcher";
+
+export default {
+  components: {
+    LanguageSwitcher,
+  },
+};
+</script>
 
 <style>
 #app {
@@ -16,14 +28,9 @@
 
 #nav {
   padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 </style>
