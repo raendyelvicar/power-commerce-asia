@@ -39,7 +39,10 @@
         Total Pembayaran
         <span class="text-base text-orange font-bold">Rp1.890.000</span>
       </div>
-      <Button cta="Lihat Cara Bayar" url="/how-to-pay"></Button>
+      <Button
+        cta="Lihat Cara Bayar"
+        :url="`/${$i18n.locale}/how-to-pay`"
+      ></Button>
     </div>
   </div>
 </template>

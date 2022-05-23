@@ -1,15 +1,24 @@
 <template>
   <div class="transaction">
-    <h2 class="title text-2xl">Transaksi</h2>
+    <h2 class="title text-2xl">{{ $t("transactions.title") }}</h2>
     <div id="filter-section">
       <button
         class="filter active"
         id="all"
         @click="filterTransactionsByStatus('all')"
+        v-if="lang === 'id'"
       >
         Semua
       </button>
-      <div v-for="item in status" :key="item.id">
+      <button
+        class="filter active"
+        id="all"
+        @click="filterTransactionsByStatus('all')"
+        v-else
+      >
+        All
+      </button>
+      <div v-for="item in $t('transactions.status')" :key="item.id">
         <button
           class="filter"
           :id="item"
@@ -28,7 +37,7 @@
           height="14px"
           width="14px"
           style="margin-right: 5px"
-        />Menunggu Pembayaran ({{ count }})
+        />{{ $t("transactions.waiting") }} ({{ count }})
       </button>
     </div>
     <button
@@ -92,13 +101,7 @@ export default {
   },
   data() {
     return {
-      status: [
-        "Menunggu Konfirmasi",
-        "Dalam Proses",
-        "Pengiriman",
-        "Selesai",
-        "Dibatalkan",
-      ],
+      lang: "",
       isLoading: true,
       count: 0,
       transactions: [],
@@ -225,8 +228,11 @@ export default {
       console.log(current, pageSize);
     },
     redirectToUrl() {
-      window.location.href = "/payment-list";
+      window.location.href = `/${this.$i18n.locale}/payment-list`;
     },
+  },
+  created() {
+    this.lang = this.$route.params.lang;
   },
   mounted() {
     this.getAllTransactions();

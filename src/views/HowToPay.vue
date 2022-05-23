@@ -1,6 +1,6 @@
 <template lang="">
   <div class="how-to-pay">
-    <h2 class="title text-2xl">Cara Bayar</h2>
+    <h2 class="title text-2xl">{{ $t("how_to_pay.title") }}</h2>
     <div class="box-container flex flex-col justify-center">
       <h3 class="text-center text-lg">
         Pembayaran anda akan berakhir pada

@@ -1,0 +1,19 @@
+{
+  "transactions": {
+    "url": "transactions",
+    "title": "Transactions",
+    "status": ["To Pay", "Proceed", "Delivered", "Completed", "Cancelled"],
+    "waiting": "Waiting Payment",
+    "total": "Total Purchase",
+    "another_product": "Product more",
+    "buttons": ["Order Received", "Buy Again"]
+  },
+  "payment_list": {
+    "url": "payment-list",
+    "title": "Waiting Payment"
+  },
+  "how_to_pay": {
+    "url": "how-to-pay",
+    "title": "How To Pay"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "transactions": {
+    "url": "transaksi",
+    "title": "Transaksi",
+    "status": [
+      "Menunggu Konfirmasi",
+      "Dalam Proses",
+      "Pengiriman",
+      "Selesai",
+      "Dibatalkan"
+    ],
+    "waiting": "Menunggu Pembayaran",
+    "total": "Total Pembayaran",
+    "another_product": "Produk Lainnya",
+    "buttons": ["Order Received", "Buy Again"]
+  },
+  "payment_list": {
+    "url": "daftar-pembayaran",
+    "title": "Daftar Pembayaran"
+  },
+  "how_to_pay": {
+    "url": "tata-cara-pembayaran",
+    "title": "Cara Pembayaran"
+  }
+}

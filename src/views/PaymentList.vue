@@ -1,6 +1,6 @@
 <template lang="">
   <div class="payment-list">
-    <h2 class="title text-2xl">Menunggu Pembayaran</h2>
+    <h2 class="title text-2xl">{{ $t("payment_list.title") }}</h2>
     <div class="payment-list-card">
       <PaymentCard :paymentInfo="paymentInfo[0]"></PaymentCard>
       <PaymentCard :paymentInfo="paymentInfo[1]"></PaymentCard>
