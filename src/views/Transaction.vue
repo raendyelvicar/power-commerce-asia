@@ -6,7 +6,7 @@
         class="filter active"
         id="all"
         @click="filterTransactionsByStatus('all')"
-        v-if="lang === 'id'"
+        v-if="lang === 'id-ID'"
       >
         Semua
       </button>
@@ -58,7 +58,7 @@
       >
         <Wallet color="#015CA1" height="14px" width="14px" />
       </div>
-      Menunggu Pembayaran ({{ count }})
+      {{ $t("transactions.waiting") }} ({{ count }})
     </button>
 
     <div class="indicator" :class="[isLoading ? '' : 'hidden']">
@@ -134,7 +134,7 @@ export default {
 
       this.isLoading = true;
       // Loop through the buttons and add the active class to the current/clicked button
-      for (var i = 0; i <= btns.length; i++) {
+      for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
           var current = document.getElementsByClassName("active");
           current[0].className = current[0].className.replace(" active", "");
@@ -145,12 +145,25 @@ export default {
         this.pagination.showedItems = [];
       }
 
+      let stat = "";
+      if (status == "Menunggu Konfirmasi" || status === "To Pay") {
+        stat = "Menunggu Konfirmasi";
+      } else if (status === "Dalam Proses" || status === "Proceed") {
+        stat = "Dalam Proses";
+      } else if (status === "Pengiriman" || status === "Delivered") {
+        stat = "Pengiriman";
+      } else if (status === "Selesai" || status === "Completed") {
+        stat = "Selesai";
+      } else if (status === "Dibatalkan" || status === "Cancelled") {
+        stat = "Dibatalkan";
+      }
+
       if (status == "all") {
         this.getAllTransactions();
       } else {
         axios
           .get(
-            `https://626b682ce5274e6664cba68e.mockapi.io/api/v1/transactions?filter=${status}`
+            `https://626b682ce5274e6664cba68e.mockapi.io/api/v1/transactions?filter=${stat}`
           )
           .then((response) => {
             this.transactions = response.data;
@@ -228,11 +241,11 @@ export default {
       console.log(current, pageSize);
     },
     redirectToUrl() {
-      window.location.href = `/${this.$i18n.locale}/payment-list`;
+      window.location.href = "/payment-list";
     },
   },
   created() {
-    this.lang = this.$route.params.lang;
+    this.lang = this.$i18n.locale;
   },
   mounted() {
     this.getAllTransactions();

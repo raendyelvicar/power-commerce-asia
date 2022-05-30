@@ -11,19 +11,6 @@ Vue.config.productionTip = false;
 
 Vue.use(Antd);
 
-router.beforeEach((to, from, next) => {
-  // to and from are both route objects. must call `next`.
-
-  let language = to.params.lang;
-  if(!language){
-    language = 'en'
-  }
-
-  i18n.locale = language;
-  next();
-
-})
-
 /* eslint-disable no-new */
 new Vue({
   router,

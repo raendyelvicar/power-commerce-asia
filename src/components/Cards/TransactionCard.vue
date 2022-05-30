@@ -7,7 +7,8 @@
         </h4>
         <p class="text-base font-regular text-grey">22 Apr 2022</p>
       </div>
-      <TransactionStatus :status="status" />
+      <TransactionStatus :status="status[0]" v-if="$i18n.locale == 'id'" />
+      <TransactionStatus :status="status[1]" v-else />
     </div>
     <div class="line"></div>
     <div class="card-body">
@@ -18,11 +19,13 @@
         <div class="card-desc">
           <p class="product-name text-base font-bold">{{ product[0].name }}</p>
           <p class="product-amount text-sm text-grey">{{ amount }} CTN</p>
-          <p class="product-size text-sm font-regular">1+ Produk Lainnya</p>
+          <p class="product-size text-sm font-regular">
+            1+ {{ $t("transactions.another_product") }}
+          </p>
         </div>
       </div>
       <div class="total-purchase font-medium text-sm desktop">
-        Total Pembayaran
+        {{ $t("transactions.total_purchase") }}
         <span class="text-base text-orange font-bold"
           >Rp{{ product[0].price }}</span
         >
@@ -30,13 +33,13 @@
     </div>
     <div
       class="btn-container desktop"
-      v-if="status === 'Pengiriman' || status === 'Selesai'"
+      v-if="status[0] === 'Pengiriman' || status[0] === 'Selesai'"
     >
       <Button :cta="cta"></Button>
     </div>
     <div class="mobile">
       <div class="total-purchase font-medium text-sm">
-        Total Pembayaran
+        {{ $t("transactions.total_purchase") }}
         <span class="text-base text-orange font-bold"
           >Rp{{ product[0].price }}</span
         >
@@ -79,10 +82,10 @@ export default {
         });
     },
     setCta() {
-      if (this.status === "Selesai") {
-        this.cta = "Beli Lagi";
-      } else if (this.status === "Pengiriman") {
-        this.cta = "Pesanan Diterima";
+      if (this.status[0] === "Selesai") {
+        this.cta = this.$i18n.t("transactions.cta.buy_again");
+      } else if (this.status[0] === "Pengiriman") {
+        this.cta = this.$i18n.t("transactions.cta.order_received");
       }
     },
   },

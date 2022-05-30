@@ -1,6 +1,5 @@
 {
   "transactions": {
-    "url": "transaksi",
     "title": "Transaksi",
     "status": [
       "Menunggu Konfirmasi",
@@ -10,16 +9,35 @@
       "Dibatalkan"
     ],
     "waiting": "Menunggu Pembayaran",
-    "total": "Total Pembayaran",
+    "total_purchase": "Total Pembayaran",
     "another_product": "Produk Lainnya",
-    "buttons": ["Order Received", "Buy Again"]
+    "buttons": ["Pesanan Diterima", "Beli Lagi"],
+    "cta": {
+      "buy_again": "Beli Lagi",
+      "order_received": "Pesanan Diterima"
+    }
   },
   "payment_list": {
-    "url": "daftar-pembayaran",
-    "title": "Daftar Pembayaran"
+    "title": "Menunggu Pembayaran",
+    "header_information": {
+      "order_number": "Nomor Order",
+      "pay_before": "Bayar Sebelum"
+    },
+    "card_information": {
+      "total_purchase": "Total Pembayaran",
+      "how_to_pay": "Lihat Cara Bayar"
+    }
   },
   "how_to_pay": {
-    "url": "tata-cara-pembayaran",
-    "title": "Cara Pembayaran"
+    "title": "Cara Pembayaran",
+    "payment_duedate": "Pembayaran anda akan berakhir pada ",
+    "account_information": {
+      "virtual_account_number": "Nomor Virtual Account",
+      "total_purchase": "Total Pembayaran",
+      "see_details": "Lihat Rincian Pembayaran"
+    },
+    "dropdown_payment": {
+      "payment_instructions": "Instruksi Pembayaran"
+    }
   }
 }

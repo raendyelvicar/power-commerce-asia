@@ -3,7 +3,7 @@
     <h2 class="title text-2xl">{{ $t("how_to_pay.title") }}</h2>
     <div class="box-container flex flex-col justify-center">
       <h3 class="text-center text-lg">
-        Pembayaran anda akan berakhir pada
+        {{ $t("how_to_pay.payment_duedate") }}
         <strong>Senin, 22 Mei 2022 - 13.00</strong>
       </h3>
       <div class="countdown-box">
@@ -13,19 +13,25 @@
         <img class="bank-logo" src="@/assets/images/bni-logo.png" />
         <div class="information-box flex flex-row justify-between items-end">
           <div class="left">
-            <p class="text-lg">Nomor Virtual Account</p>
+            <p class="text-lg">
+              {{ $t("how_to_pay.account_information.virtual_account_number") }}
+            </p>
             <p class="text-lg font-bold">09808989092</p>
           </div>
           <div class="center text-center">
-            <p class="text-lg">Total Pembayaran</p>
+            <p class="text-lg">
+              {{ $t("how_to_pay.account_information.total_purchase") }}
+            </p>
             <p class="text-lg font-bold text-orange">Rp700.000</p>
           </div>
-          <a class="right text-base">Lihat Rincian Pembayaran</a>
+          <a class="right text-base">
+            {{ $t("how_to_pay.account_information.see_details") }}</a
+          >
         </div>
       </div>
       <div class="payment-instructions">
         <h3 class="text-blue font-bold text-lg" style="margin-bottom: 20px">
-          Instruksi Pembayaran
+          {{ $t("how_to_pay.dropdown_payment.payment_instructions") }}
         </h3>
         <Accordion></Accordion>
       </div>

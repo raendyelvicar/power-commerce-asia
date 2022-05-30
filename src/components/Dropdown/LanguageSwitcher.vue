@@ -40,11 +40,7 @@ export default {
       console.log("click", e);
     },
     setLocale(locale) {
-      this.$i18n.locale = locale;
-      this.$router.push({
-        params: { lang: locale },
-      });
-
+      this.$store.dispatch("changeLocale", locale);
       this.title = locale.toUpperCase();
     },
   },

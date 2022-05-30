@@ -3,6 +3,7 @@
     <div id="nav">
       <LanguageSwitcher />
     </div>
+
     <router-view />
   </div>
 </template>

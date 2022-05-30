@@ -9,12 +9,16 @@
           style="margin-right: 10px"
         />
         <div>
-          <span class="text-sm text-grey">Nomor Order</span>
+          <span class="text-sm text-grey">{{
+            $t("payment_list.header_information.order_number")
+          }}</span>
           <p class="text-base font-bold">KMZWAY87AA</p>
         </div>
       </div>
       <div class="header-right text-right">
-        <p class="text-sm text-grey">Bayar Sebelum</p>
+        <p class="text-sm text-grey">
+          {{ $t("payment_list.header_information.pay_before") }}
+        </p>
         <p class="text-base font-medium text-red">22 Apr 2020, 13:30:06</p>
       </div>
     </div>
@@ -30,18 +34,18 @@
         </div>
       </div>
       <div class="total-purchase font-medium text-sm">
-        Total Pembayaran
+        {{ $t("payment_list.card_information.total_purchase") }}
         <span class="text-base text-orange font-bold">Rp1.890.000</span>
       </div>
     </div>
     <div class="btn-container">
       <div class="mobile total-purchase font-medium text-sm">
-        Total Pembayaran
+        {{ $t("payment_list.card_information.total_purchase") }}
         <span class="text-base text-orange font-bold">Rp1.890.000</span>
       </div>
       <Button
-        cta="Lihat Cara Bayar"
-        :url="`/${$i18n.locale}/how-to-pay`"
+        :cta="$t('payment_list.card_information.how_to_pay')"
+        url="/how-to-pay"
       ></Button>
     </div>
   </div>

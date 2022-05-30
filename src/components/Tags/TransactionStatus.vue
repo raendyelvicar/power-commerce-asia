@@ -14,16 +14,18 @@ export default {
   },
   methods: {
     setColor() {
-      if (this.status === "Menunggu Konfirmasi") {
+      if (this.status === "Menunggu Konfirmasi" || this.status === "To Pay") {
         this.bgColor = "#929292";
       } else if (
         this.status === "Dalam Proses" ||
-        this.status === "Pengiriman"
+        this.status === "Pengiriman" ||
+        this.status === "Proceed" ||
+        this.status === "Delivered"
       ) {
         this.bgColor = "#F5831F";
-      } else if (this.status === "Selesai") {
+      } else if (this.status === "Selesai" || this.status === "Completed") {
         this.bgColor = "#015CA1";
-      } else if (this.status === "Dibatalkan") {
+      } else if (this.status === "Dibatalkan" || this.status === "Cancelled") {
         this.bgColor = "#FF0000";
       }
     },

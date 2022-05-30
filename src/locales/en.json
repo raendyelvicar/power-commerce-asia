@@ -1,19 +1,37 @@
 {
   "transactions": {
-    "url": "transactions",
     "title": "Transactions",
     "status": ["To Pay", "Proceed", "Delivered", "Completed", "Cancelled"],
     "waiting": "Waiting Payment",
-    "total": "Total Purchase",
-    "another_product": "Product more",
-    "buttons": ["Order Received", "Buy Again"]
+    "total_purchase": "Total Purchase",
+    "another_product": "more product",
+    "buttons": ["Order Received", "Buy Again"],
+    "cta": {
+      "buy_again": "Buy Again",
+      "order_received": "Order Received"
+    }
   },
   "payment_list": {
-    "url": "payment-list",
-    "title": "Waiting Payment"
+    "title": "Waiting Payment",
+    "header_information": {
+      "order_number": "Order Number",
+      "pay_before": "Pay Before"
+    },
+    "card_information": {
+      "total_purchase": "Total Purchase",
+      "how_to_pay": "How To Pay"
+    }
   },
   "how_to_pay": {
-    "url": "how-to-pay",
-    "title": "How To Pay"
+    "title": "How To Pay",
+    "payment_duedate": "Transfer Before",
+    "account_information": {
+      "virtual_account_number": "Virtual Account Number",
+      "total_purchase": "Total Purchase",
+      "see_details": "See Details"
+    },
+    "dropdown_payment": {
+      "payment_instructions": "Payment Instructions  "
+    }
   }
 }
