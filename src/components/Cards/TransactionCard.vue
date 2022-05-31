@@ -31,11 +31,11 @@
         >
       </div>
     </div>
-    <div
-      class="btn-container desktop"
-      v-if="status[0] === 'Pengiriman' || status[0] === 'Selesai'"
-    >
-      <Button :cta="cta"></Button>
+    <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
+      <Button :cta="$i18n.t('transactions.cta.order_received')"></Button>
+    </div>
+    <div class="btn-container desktop" v-else-if="status[0] === 'Selesai'">
+      <Button :cta="$i18n.t('transactions.cta.buy_again')"></Button>
     </div>
     <div class="mobile">
       <div class="total-purchase font-medium text-sm">
@@ -44,11 +44,11 @@
           >Rp{{ product[0].price }}</span
         >
       </div>
-      <div
-        class="btn-container"
-        v-if="status === 'Pengiriman' || status === 'Selesai'"
-      >
-        <Button :cta="cta"></Button>
+      <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
+        <Button :cta="$i18n.t('transactions.cta.order_received')"></Button>
+      </div>
+      <div class="btn-container desktop" v-else-if="status[0] === 'Selesai'">
+        <Button :cta="$i18n.t('transactions.cta.buy_again')"></Button>
       </div>
     </div>
   </div>
@@ -68,7 +68,6 @@ export default {
   data() {
     return {
       product: [],
-      cta: "",
     };
   },
   methods: {
@@ -81,17 +80,9 @@ export default {
           this.product.push(response.data);
         });
     },
-    setCta() {
-      if (this.status[0] === "Selesai") {
-        this.cta = this.$i18n.t("transactions.cta.buy_again");
-      } else if (this.status[0] === "Pengiriman") {
-        this.cta = this.$i18n.t("transactions.cta.order_received");
-      }
-    },
   },
   mounted() {
     this.getProductById();
-    this.setCta();
   },
 };
 </script>
