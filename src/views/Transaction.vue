@@ -60,11 +60,7 @@
       </div>
       {{ $t("transactions.waiting") }} ({{ count }})
     </button>
-
-    <div class="indicator" :class="[isLoading ? '' : 'hidden']">
-      <a-spin :indicator="indicator" />
-    </div>
-    <div v-for="item in pagination.showedItems" :key="item.id">
+    <div v-for="item in transactions" :key="item.id">
       <TransactionCard
         :orderId="item.order_id"
         :amount="item.amount"
@@ -72,17 +68,14 @@
         :status="item.status"
       ></TransactionCard>
     </div>
-    <div class="pagination flex justify-center items-center">
-      <a-pagination
-        :class="[isLoading ? 'hidden' : '']"
-        v-model="pagination.current"
-        :defaultCurrent="1"
-        :pageSize="pagination.pageSize"
-        :total="pagination.totalCount"
-        @change="onPageChange"
-        @show-size-change="onShowSizeChange"
-      />
+    <div class="indicator" :class="[isLoading ? '' : 'hidden']">
+      <a-spin :indicator="indicator" />
     </div>
+    <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
+      <div slot="no-more" style="margin: 0 20px">
+        No more data
+      </div></infinite-loading
+    >
   </div>
 </template>
 
@@ -90,7 +83,10 @@
 import TransactionCard from "@/components/Cards/TransactionCard";
 import FilterComponent from "@/components/Filter/FilterComponent";
 import Wallet from "@/components/Icons/Wallet";
+import InfiniteLoading from "vue-infinite-loading";
 import axios from "axios";
+
+const API = "https://626b682ce5274e6664cba68e.mockapi.io/api/v1";
 
 export default {
   name: "Transaction",
@@ -98,32 +94,44 @@ export default {
     TransactionCard,
     FilterComponent,
     Wallet,
+    InfiniteLoading,
   },
   data() {
     return {
       lang: "",
       isLoading: true,
       count: 0,
+      page: 1,
+      limit: 5,
+      infiniteId: +new Date(),
       transactions: [],
       indicator: <a-icon type="loading" style="font-size: 24px" spin />,
-      pagination: {
-        totalCount: 0,
-        pageSize: 20,
-        current: 1,
-        totalPage: 0,
-        showedItems: [],
-      },
     };
   },
   methods: {
-    getAllTransactions() {
+    infiniteHandler($state) {
       axios
-        .get(`https://626b682ce5274e6664cba68e.mockapi.io/api/v1/transactions`)
-        .then((response) => {
-          this.transactions = response.data;
-          this.setPagination(this.transactions);
-          this.isLoading = false;
+        .get(API + "/transactions", {
+          params: {
+            page: this.page,
+            limit: this.limit,
+          },
+        })
+        .then(({ data }) => {
+          if (data.length) {
+            this.page += 1;
+            this.transactions.push(...data);
+            this.isLoading = false;
+            $state.loaded();
+          } else {
+            $state.complete();
+          }
         });
+    },
+    changeType() {
+      this.page = 1;
+      this.transactions = [];
+      this.infiniteId += 1;
     },
     filterTransactionsByStatus(status) {
       // Get the container element
@@ -142,7 +150,6 @@ export default {
         });
 
         this.transactions = [];
-        this.pagination.showedItems = [];
       }
 
       let stat = "";
@@ -167,7 +174,6 @@ export default {
           )
           .then((response) => {
             this.transactions = response.data;
-            this.setPagination(this.transactions);
             this.isLoading = false;
           });
       }
@@ -180,29 +186,6 @@ export default {
         .then((response) => {
           this.count = response.data.length;
         });
-    },
-    setPagination(data) {
-      const paginate = this.pagination;
-
-      paginate.totalCount = data.length;
-      paginate.totalPage = Math.ceil(paginate.totalCount / paginate.pageSize);
-
-      if (paginate.totalCount < 20) {
-        paginate.showedItems = data.slice(0, paginate.totalCount);
-      } else if (paginate.totalCount > 20) {
-        let index = paginate.pageSize * (paginate.current - 1);
-
-        if (paginate.current === 1) {
-          paginate.showedItems = data.slice(0, paginate.pageSize);
-        } else if (paginate.current === paginate.totalPage) {
-          paginate.showedItems = data.slice(index);
-        } else {
-          paginate.showedItems = data.slice(
-            index,
-            paginate.pageSize * paginate.current
-          );
-        }
-      }
     },
     dragToScroll() {
       const slider = document.getElementById("filter-section");
@@ -233,13 +216,6 @@ export default {
         console.log(walk);
       });
     },
-    onPageChange(page) {
-      this.pagination.current = page;
-      this.getAllTransactions();
-    },
-    onShowSizeChange(current, pageSize) {
-      console.log(current, pageSize);
-    },
     redirectToUrl() {
       window.location.href = "/payment-list";
     },
@@ -248,7 +224,6 @@ export default {
     this.lang = this.$i18n.locale;
   },
   mounted() {
-    this.getAllTransactions();
     this.dragToScroll();
     this.getCountPendingPayment();
     this.filterTransactionsByStatus("all");

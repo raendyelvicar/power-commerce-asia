@@ -6,10 +6,12 @@ import store from "./store";
 import "ant-design-vue/dist/antd.css";
 import "@/assets/css/main.css";
 import i18n from './i18n'
+import InfiniteLoading from 'vue-infinite-loading';
 
 Vue.config.productionTip = false;
 
 Vue.use(Antd);
+Vue.use(InfiniteLoading);
 
 /* eslint-disable no-new */
 new Vue({
