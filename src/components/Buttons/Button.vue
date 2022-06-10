@@ -6,7 +6,15 @@
 <script>
 export default {
   name: "Button",
-  props: ["cta", "url"],
+  props: [
+    "cta",
+    "url",
+    "bgColor",
+    "textColor",
+    "borderColor",
+    "bgHover",
+    "icon",
+  ],
   methods: {
     redirectToUrl() {
       window.location.href = this.url;

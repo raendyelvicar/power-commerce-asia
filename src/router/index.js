@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Transaction from "../views/Transaction.vue";
 import PaymentList from "../views/PaymentList.vue";
 import HowToPay from "../views/HowToPay.vue";
+import ProductCatalog from "../views/ProductCatalog.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,14 @@ const routes = [
     path: "/how-to-pay",
     name: "How To Pay",
     component: HowToPay,
+    meta: {
+      title: 'Power Commerce Asia - How To Pay',
+    }
+  },
+  {
+    path: "/catalog",
+    name: "Product Catalog",
+    component: ProductCatalog,
     meta: {
       title: 'Power Commerce Asia - How To Pay',
     }
