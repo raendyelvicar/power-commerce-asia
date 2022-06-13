@@ -28,8 +28,8 @@ export default {
 }
 
 #nav {
-  padding: 30px;
-  width: 90%;
+  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

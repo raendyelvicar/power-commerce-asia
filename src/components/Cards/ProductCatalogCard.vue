@@ -83,4 +83,11 @@ export default {
 button.button {
   margin-top: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .product-catalog-card {
+    margin: 20px 0;
+    width: 100%;
+  }
+}
 </style>

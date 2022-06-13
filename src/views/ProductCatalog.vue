@@ -50,8 +50,14 @@ li {
 .product-container {
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
   margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-catalog {
+    width: 95%;
+  }
 }
 </style>
