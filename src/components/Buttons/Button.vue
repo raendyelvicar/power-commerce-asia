@@ -1,5 +1,6 @@
 <template lang="">
   <button class="button" @click="redirectToUrl">
+    <slot name="icon"> </slot>
     {{ cta }}
   </button>
 </template>

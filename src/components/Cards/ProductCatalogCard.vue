@@ -4,20 +4,30 @@
       <img :src="imgUrl" />
     </div>
     <div class="card-body">
-      <p class="product-title text-base font-bold">{{ title }}</p>
-      <p class="product-price">{{ price }}</p>
+      <p class="product-title text-sm">{{ title }}</p>
+      <p class="product-price text-sm font-bold">{{ price }}</p>
     </div>
-    <Button cta="Keranjang"></Button>
+    <Button cta="Keranjang" class="bucket flex justify-center items-center">
+      <Plus
+        height="12px"
+        width="12px"
+        color="#015CA1"
+        slot="icon"
+        style="margin-right: 5px"
+      ></Plus>
+    </Button>
   </div>
 </template>
 <script>
 import Button from "@/components/Buttons/Button";
+import Plus from "@/components/Icons/Plus";
 
 export default {
   name: "ProductCatalogCard",
   props: ["productId", "imgUrl", "title", "price"],
   components: {
     Button,
+    Plus,
   },
 };
 </script>
@@ -55,8 +65,12 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   margin: 10px 0;
+}
+
+.card-body p {
+  line-height: 2;
 }
 
 .card-body .product-title {
