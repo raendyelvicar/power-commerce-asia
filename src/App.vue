@@ -1,37 +1,11 @@
 <template>
-  <div id="app font-open-sans">
-    <div id="nav">
-      <LanguageSwitcher />
+  <Layout>
+    <div id="app font-open-sans">
+      <router-view />
     </div>
-
-    <router-view />
-  </div>
+  </Layout>
 </template>
 
 <script>
-import LanguageSwitcher from "@/components/Dropdown/LanguageSwitcher";
-
-export default {
-  components: {
-    LanguageSwitcher,
-  },
-};
+export default {};
 </script>
-
-<style>
-#app {
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 20px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-</style>

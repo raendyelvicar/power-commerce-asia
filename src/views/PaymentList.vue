@@ -48,21 +48,11 @@ export default {
 <style>
 .payment-list {
   margin-bottom: 50px;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: auto;
 }
 
 .title {
   font-weight: 700;
   font-size: 20px;
-}
-
-@media only screen and (max-width: 600px) {
-  .payment-list {
-    width: 95%;
-  }
 }
 </style>

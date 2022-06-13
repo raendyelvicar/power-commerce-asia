@@ -234,10 +234,6 @@ export default {
 <style>
 .transaction {
   margin-bottom: 50px;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: auto;
 }
 
@@ -307,12 +303,6 @@ export default {
 
 .pending-payment {
   display: none;
-}
-
-@media only screen and (max-width: 600px) {
-  .transaction {
-    width: 95%;
-  }
 }
 
 @media (max-width: 768px) {

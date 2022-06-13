@@ -44,10 +44,10 @@
           >Rp{{ product[0].price }}</span
         >
       </div>
-      <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
+      <div class="btn-container mobile" v-if="status[0] === 'Pengiriman'">
         <Button :cta="$i18n.t('transactions.cta.order_received')"></Button>
       </div>
-      <div class="btn-container desktop" v-else-if="status[0] === 'Selesai'">
+      <div class="btn-container mobile" v-else-if="status[0] === 'Selesai'">
         <Button :cta="$i18n.t('transactions.cta.buy_again')"></Button>
       </div>
     </div>

@@ -52,10 +52,6 @@ export default {
 </script>
 <style>
 .how-to-pay {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 70%;
   margin: auto;
   margin-bottom: 20px;
 }
@@ -106,10 +102,6 @@ export default {
 }
 
 @media only screen and (max-width: 768px) {
-  .how-to-pay {
-    width: 95%;
-  }
-
   .box-container {
     padding: 10px;
   }
