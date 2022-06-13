@@ -6,15 +6,25 @@
     <div class="wrapper">
       <div class="card-body">
         <p class="product-title text-sm w-full">{{ title }}</p>
-        <p class="product-price text-sm font-bold">{{ price }}</p>
+        <p
+          class="product-price text-sm font-bold flex justify-center items-center"
+        >
+          <WalletStar
+            height="20px"
+            width="20px"
+            color="#015CA1"
+            style="margin-right: 5px"
+          ></WalletStar>
+          {{ price }}
+        </p>
       </div>
       <Button
         cta="Keranjang"
         class="bucket flex justify-center items-center w-full"
       >
         <Plus
-          height="12px"
-          width="12px"
+          height="10px"
+          width="10px"
           color="#015CA1"
           slot="icon"
           style="margin-right: 5px"
@@ -26,6 +36,7 @@
 <script>
 import Button from "@/components/Buttons/Button";
 import Plus from "@/components/Icons/Plus";
+import WalletStar from "@/components/Icons/WalletStar";
 
 export default {
   name: "ProductCatalogCard",
@@ -33,6 +44,7 @@ export default {
   components: {
     Button,
     Plus,
+    WalletStar,
   },
 };
 </script>
