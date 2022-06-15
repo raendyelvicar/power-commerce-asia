@@ -72,6 +72,10 @@ p{
     text-align: right;
 }
 
+.text-justify{
+    text-align: justify;
+}
+
 .font-open-sans{
     font-family: "Open Sans", sans-serif;
 }

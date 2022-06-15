@@ -1,7 +1,7 @@
 <template lang="">
-  <div class="container">
+  <div class="flex flex-col justify-center">
     <div class="mySlides">
-      <img :src="currentImageUrl" />
+      <img :src="currentImageUrl" id="image-show" />
     </div>
 
     <div class="row">
@@ -26,24 +26,23 @@ export default {
   },
   methods: {
     zoomOnHover() {
-      const container = document.getElementsByClassName("mySlides");
-      const img = document.querySelector("img");
+      let container = document.querySelector("div.mySlides");
+      let img = document.querySelector("img#image-show");
+
       container.addEventListener("mousemove", onZoom);
       container.addEventListener("mouseover", onZoom);
       container.addEventListener("mouseleave", offZoom);
 
       function onZoom(e) {
-        const x = e.pageX - e.target.offsetLeft;
-        const y = e.pageY - e.target.offsetTop;
+        let x = e.clientX - e.target.offsetLeft;
+        let y = e.clientY - e.target.offsetTop;
         img.style.transformOrigin = `${x}px ${y}px`;
         img.style.transform = "scale(2.5)";
       }
 
       function offZoom(e) {
-        const x = e.pageX - e.target.offsetLeft;
-        const y = e.pageY - e.target.offsetTop;
-        img.style.transformOrigin = `${x}px ${y}px`;
-        img.style.transform = "scale(2.5)";
+        img.style.transformOrigin = `center center`;
+        img.style.transform = "scale(1)";
       }
     },
     ...mapActions(["changeImageUrl"]),
@@ -62,19 +61,18 @@ export default {
       dots[this.slideIndex - 1].className += " active";
     },
   },
+  mounted() {
+    this.zoomOnHover();
+  },
 };
 </script>
-<style scoped>
-/* Hide the images by default */
+<style>
 .mySlides {
-  height: 400px;
-  width: 400px;
   overflow: hidden;
   margin-bottom: 20px;
 }
 
 .mySlides img {
-  transform-origin: center center;
   object-fit: cover;
   height: 100%;
   width: 100%;
@@ -122,7 +120,6 @@ export default {
 
 .row {
   display: flex;
-  width: 50%;
 }
 
 /* Add a transparency effect for thumnbail images */
