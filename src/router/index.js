@@ -1,15 +1,25 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 import Transaction from "../views/Transaction.vue";
 import PaymentList from "../views/PaymentList.vue";
 import HowToPay from "../views/HowToPay.vue";
 import ProductCatalog from "../views/ProductCatalog.vue";
+import DetailProduct from "../views/DetailProduct.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "Home",
+    component: Home,
+    meta: {
+      title: 'Power Commerce Asia - Home',
+    }
+  },
+  {
+    path: "/transactions",
     name: "Transactions",
     component: Transaction,
     meta: {
@@ -34,7 +44,15 @@ const routes = [
     name: "Product Catalog",
     component: ProductCatalog,
     meta: {
-      title: 'Power Commerce Asia - How To Pay',
+      title: 'Power Commerce Asia - Product Catalog',
+    }
+  },
+  {
+    path: "/detail",
+    name: "Detail Product",
+    component: DetailProduct,
+    meta: {
+      title: 'Power Commerce Asia - Detail Product',
     }
   },
 ];

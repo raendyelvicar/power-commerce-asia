@@ -1,17 +1,17 @@
 <template lang="">
   <div id="layout">
-    <div id="nav">
-      <LanguageSwitcher />
-    </div>
+    <Navbar id="nav"> </Navbar>
     <slot />
   </div>
 </template>
 <script>
 import LanguageSwitcher from "@/components/Dropdown/LanguageSwitcher";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default {
   components: {
     LanguageSwitcher,
+    Navbar,
   },
 };
 </script>
@@ -32,11 +32,12 @@ body {
 }
 
 #nav {
-  padding: 20px;
+  padding: 20px 10px;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
 
 @media only screen and (max-width: 768px) {
