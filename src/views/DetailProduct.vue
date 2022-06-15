@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="detail-product flex flex-row justify-center">
+  <div class="detail-product">
     <Slideshow class="slideshow"></Slideshow>
 
     <div class="product-information flex flex-col">
@@ -58,13 +58,10 @@ export default {
 };
 </script>
 <style>
-.slideshow {
-  width: 40%;
-}
-
-.product-information {
-  width: 60%;
-  padding: 0px 50px;
+.detail-product {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 50px;
 }
 
 .line {
@@ -77,5 +74,14 @@ export default {
 
 .notes {
   padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .detail-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-gap: 20px;
+  }
 }
 </style>

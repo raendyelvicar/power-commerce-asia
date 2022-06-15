@@ -34,6 +34,7 @@ body {
 #nav {
   padding: 20px 10px;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;

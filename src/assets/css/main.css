@@ -100,6 +100,18 @@ p{
     flex-direction: column;
 }
 
+.wrap{
+    flex-wrap: wrap;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+.flex-2{
+    flex: 2;
+}
+
 .justify-center{
     justify-content: center;
 }
@@ -199,6 +211,10 @@ p{
 @media only screen and (max-width: 600px) {
     .desktop{
         display: none;
+    }
+
+    .mobile{
+        display: block;
     }
 }
 

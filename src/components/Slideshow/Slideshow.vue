@@ -1,30 +1,66 @@
 <template lang="">
-  <div class="flex flex-col justify-center">
-    <div class="mySlides">
-      <img :src="currentImageUrl" id="image-show" />
+  <div>
+    <div class="desktop flex flex-col justify-center">
+      <div class="mySlides">
+        <img :src="currentImageUrl" id="image-show" />
+      </div>
+
+      <div class="row">
+        <div class="column" v-for="item in dummyData" :key="item.id">
+          <img
+            class="demo cursor"
+            :src="item.imgUrl"
+            style="width: 100%"
+            @click="changeImageUrl(item.imgUrl)"
+            alt="iPhone Product"
+          />
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="column" v-for="item in dummyData" :key="item.id">
-        <img
-          class="demo cursor"
-          :src="item.imgUrl"
-          style="width: 100%"
-          @click="changeImageUrl(item.imgUrl)"
-          alt="iPhone Product"
-        />
-      </div>
+    <div class="mobile flex flex-col justify-center">
+      <VueSlickCarousel
+        class="image-slider"
+        v-if="dummyData"
+        v-bind="settingsImageSlider"
+      >
+        <div class="mySlides" v-for="item in dummyData" :key="item.id">
+          <img :src="item.imgUrl" />
+        </div>
+      </VueSlickCarousel>
     </div>
   </div>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
 
 export default {
+  components: {
+    VueSlickCarousel,
+  },
+  data() {
+    return {
+      settingsImageSlider: {
+        dots: false,
+        arrows: false,
+        dotsClass: "slick-dots custom-dot-class",
+        edgeFriction: 0.35,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    };
+  },
   computed: {
     ...mapGetters(["currentImageUrl", "dummyData"]),
   },
   methods: {
+    onChange(a, b, c) {
+      console.log(a, b, c);
+    },
     zoomOnHover() {
       let container = document.querySelector("div.mySlides");
       let img = document.querySelector("img#image-show");
@@ -38,6 +74,7 @@ export default {
         let y = e.clientY - e.target.offsetTop;
         img.style.transformOrigin = `${x}px ${y}px`;
         img.style.transform = "scale(2.5)";
+        img.style.cursor = "crosshair";
       }
 
       function offZoom(e) {
@@ -78,40 +115,6 @@ export default {
   width: 100%;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 .row:after {
   content: "";
   display: table;
@@ -130,5 +133,22 @@ export default {
 .active,
 .demo:hover {
   opacity: 1;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+  }
 }
 </style>
