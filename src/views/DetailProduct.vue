@@ -38,26 +38,60 @@
         excepteur.
       </div>
 
-      <div class="notes text-xs text-justify font-bold">
-        Notes: Eu elit non ad et eiusmod enim tempor mollit excepteur tempor
+      <div class="notes text-xs text-justify font-bold bg-blue-baby">
+        Catatan: Eu elit non ad et eiusmod enim tempor mollit excepteur tempor
         deserunt ut.
+      </div>
+
+      <div class="btn-container flex flex-row">
+        <Button
+          cta="Kembali"
+          bgColor="#ffffff"
+          borderColor="#015CA1"
+          textColor="#015CA1"
+          bgHover="#f4f4f4"
+          class="back flex justify-center items-center"
+          style="margin: 20px 10px"
+        >
+        </Button>
+        <Button
+          cta="Keranjang"
+          bgColor="#015CA1"
+          borderColor="#015CA1"
+          textColor="#ffffff"
+          bgHover="#015CA1"
+          class="bucket flex justify-center items-center"
+          style="margin: 20px 10px"
+        >
+          <Plus
+            height="10px"
+            width="10px"
+            color="#ffffff"
+            slot="icon"
+            style="margin-right: 5px"
+          ></Plus>
+        </Button>
       </div>
     </div>
   </div>
 </template>
 <script>
 import Slideshow from "@/components/Slideshow/Slideshow";
+import Plus from "@/components/Icons/Plus";
 import WalletStar from "@/components/Icons/WalletStar";
+import Button from "@/components/Buttons/Button";
 
 export default {
   name: "DetailProduct",
   components: {
     Slideshow,
+    Plus,
     WalletStar,
+    Button,
   },
 };
 </script>
-<style>
+<style scoped>
 .detail-product {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -73,7 +107,16 @@ export default {
 }
 
 .notes {
-  padding: 20px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.btn-container {
+  justify-content: flex-end;
+}
+
+button.button {
+  width: 25%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -82,6 +125,14 @@ export default {
     flex-direction: column;
     justify-content: center;
     grid-gap: 20px;
+  }
+
+  .btn-container {
+    justify-content: center;
+  }
+
+  button.button {
+    width: 100%;
   }
 }
 </style>

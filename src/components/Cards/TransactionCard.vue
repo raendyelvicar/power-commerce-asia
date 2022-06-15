@@ -32,10 +32,22 @@
       </div>
     </div>
     <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
-      <Button :cta="$i18n.t('transactions.cta.order_received')"></Button>
+      <Button
+        :cta="$i18n.t('transactions.cta.order_received')"
+        bgColor="transparent"
+        borderColor="#015CA1"
+        textColor="#015CA1"
+        bgHover="#f4f4f4"
+      ></Button>
     </div>
     <div class="btn-container desktop" v-else-if="status[0] === 'Selesai'">
-      <Button :cta="$i18n.t('transactions.cta.buy_again')"></Button>
+      <Button
+        :cta="$i18n.t('transactions.cta.buy_again')"
+        bgColor="transparent"
+        borderColor="#015CA1"
+        textColor="#015CA1"
+        bgHover="#f4f4f4"
+      ></Button>
     </div>
     <div class="mobile">
       <div class="total-purchase font-medium text-sm">
@@ -45,10 +57,22 @@
         >
       </div>
       <div class="btn-container mobile" v-if="status[0] === 'Pengiriman'">
-        <Button :cta="$i18n.t('transactions.cta.order_received')"></Button>
+        <Button
+          :cta="$i18n.t('transactions.cta.order_received')"
+          bgColor="#ffffff"
+          borderColor="#015CA1"
+          textColor="#015CA1"
+          bgHover="#f4f4f4"
+        ></Button>
       </div>
       <div class="btn-container mobile" v-else-if="status[0] === 'Selesai'">
-        <Button :cta="$i18n.t('transactions.cta.buy_again')"></Button>
+        <Button
+          :cta="$i18n.t('transactions.cta.buy_again')"
+          bgColor="#ffffff"
+          borderColor="#015CA1"
+          textColor="#015CA1"
+          bgHover="#f4f4f4"
+        ></Button>
       </div>
     </div>
   </div>

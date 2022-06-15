@@ -45,6 +45,10 @@
       </div>
       <Button
         :cta="$t('payment_list.card_information.how_to_pay')"
+        bgColor="transparent"
+        borderColor="#015CA1"
+        textColor="#015CA1"
+        bgHover="#f4f4f4"
         url="/how-to-pay"
       ></Button>
     </div>

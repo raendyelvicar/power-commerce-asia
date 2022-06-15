@@ -20,6 +20,10 @@
       </div>
       <Button
         cta="Keranjang"
+        bgColor="transparent"
+        borderColor="#015CA1"
+        textColor="#015CA1"
+        bgHover="#f4f4f4"
         class="bucket flex justify-center items-center w-full"
       >
         <Plus

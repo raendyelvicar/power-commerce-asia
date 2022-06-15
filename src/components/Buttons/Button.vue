@@ -1,5 +1,5 @@
 <template lang="">
-  <button class="button" @click="redirectToUrl">
+  <button class="button" @click="redirectToUrl" :style="cssProps">
     <slot name="icon"> </slot>
     {{ cta }}
   </button>
@@ -21,22 +21,32 @@ export default {
       window.location.href = this.url;
     },
   },
+  computed: {
+    cssProps() {
+      return {
+        "--bg-color": this.bgColor,
+        "--text-color": this.textColor,
+        "--border-color": this.borderColor,
+        "--bg-hover-color": this.bgHover,
+      };
+    },
+  },
 };
 </script>
 <style>
 .button {
-  color: #015ca1;
+  color: var(--text-color);
   font-weight: 600;
   margin-top: 20px;
-  padding: 5px 30px;
-  border: 1px #015ca1 solid;
-  background-color: transparent;
-  border-radius: 5px;
+  padding: 6px 30px;
+  border: 1px var(--border-color) solid;
+  background-color: var(--bg-color);
+  border-radius: 8px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #b0dfe5;
+  background-color: var(--bg-hover-color);
 }
 
 @media only screen and (max-width: 600px) {

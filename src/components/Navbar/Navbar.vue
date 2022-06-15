@@ -5,24 +5,32 @@
         <router-link to="/">Beranda</router-link>
       </a-menu-item>
 
-      <a-menu-item key="catalog">
-        <router-link to="/catalog">Katalog</router-link>
-      </a-menu-item>
+      <a-sub-menu>
+        <span slot="title" class="submenu-title-wrapper"> Produk</span>
+        <a-menu-item-group>
+          <a-menu-item key="product:1">
+            <router-link to="/catalog">Katalog Produk</router-link></a-menu-item
+          >
+          <a-menu-item key="product:2">
+            <router-link to="/detail">Detail Produk</router-link></a-menu-item
+          >
+        </a-menu-item-group>
+      </a-sub-menu>
 
       <a-sub-menu>
         <span slot="title" class="submenu-title-wrapper"> Transaksi</span>
         <a-menu-item-group>
-          <a-menu-item key="setting:1">
+          <a-menu-item key="transactions:1">
             <router-link to="/transactions"
               >Daftar Transaksi</router-link
             ></a-menu-item
           >
-          <a-menu-item key="setting:2">
+          <a-menu-item key="transactions:2">
             <router-link to="/payment-list"
               >Menunggu Pembayaran</router-link
             ></a-menu-item
           >
-          <a-menu-item key="setting:3">
+          <a-menu-item key="transactions:3">
             <router-link to="/how-to-pay">Cara Pembayaran</router-link>
           </a-menu-item>
         </a-menu-item-group>

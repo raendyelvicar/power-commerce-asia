@@ -16,6 +16,14 @@
           />
         </div>
       </div>
+
+      <Button
+        cta="Lihat lebih banyak"
+        bgColor="transparent"
+        borderColor="#015CA1"
+        textColor="#015CA1"
+        bgHover="#f4f4f4"
+      ></Button>
     </div>
 
     <div class="mobile flex flex-col justify-center">
@@ -35,10 +43,12 @@
 import { mapActions, mapGetters } from "vuex";
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import Button from "@/components/Buttons/Button";
 
 export default {
   components: {
     VueSlickCarousel,
+    Button,
   },
   data() {
     return {
@@ -123,6 +133,7 @@ export default {
 
 .row {
   display: flex;
+  margin-bottom: 20px;
 }
 
 /* Add a transparency effect for thumnbail images */
