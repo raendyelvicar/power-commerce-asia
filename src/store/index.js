@@ -9,7 +9,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
       locale: selectedLocale,
+      isLoading:true,
       products:[],
+      pagination: {
+        totalCount: 0,
+        pageSize: 10,
+        current: 1,
+        totalPage: 0,
+        showedItems: [],
+      },
       dummy: [
         {
           id: 1,
@@ -49,6 +57,32 @@ export default new Vuex.Store({
     },
     setCurrentImageUrl(state, newState){
       state.currentImageUrl = newState;
+    },
+    setLoadingState(state, newState){
+      state.isLoading = newState;
+    },
+    setPagination(state, data) {
+      let paginate = state.pagination;
+      paginate.totalCount = data.length;
+      paginate.totalPage = Math.ceil(paginate.totalCount / paginate.pageSize);
+      if (paginate.totalCount < 10) {
+        paginate.showedItems = data.slice(0, paginate.totalCount);
+      } else if (paginate.totalCount > 10) {
+        let index = paginate.pageSize * (paginate.current - 1);
+        if (paginate.current === 1) {
+          paginate.showedItems = data.slice(0, paginate.pageSize);
+        } else if (paginate.current === paginate.totalPage) {
+          paginate.showedItems = data.slice(index);
+        } else {
+          paginate.showedItems = data.slice(
+            index,
+            paginate.pageSize * paginate.current
+          );
+        }
+      }
+    },
+    setCurrentPage(state, page){
+      state.pagination.current = page
     }
   },
 
@@ -59,21 +93,41 @@ export default new Vuex.Store({
     },
     async fetchAllProducts({ commit }) {
       try {
-        const response = await axios.get("https://626b682ce5274e6664cba68e.mockapi.io/api/v1/products");
-        const data = response.data;
-        commit("setProducts", data);
-      } catch (err) {
-        return console.error(err);
+        await axios.get("https://626b682ce5274e6664cba68e.mockapi.io/api/v1/products").then(function (response) {
+          // handle success
+          const data = response.data;
+          commit("setProducts", data);
+          commit("setPagination", data)
+          commit("setLoadingState", false)
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+      } catch (error) {
+        return console.error(error);
       }
     },
     async changeImageUrl({commit}, newState){
       try {
         commit('setCurrentImageUrl', newState);
       } catch (error) {
-        return console.error(err);
+        return console.error(error);
+      }
+    },
+    changeLoadingState({commit}, newState) {
+      try {
+        commit('setLoadingState', newState);
+      } catch (error) {
+        return console.error(error);
+      }
+    },
+    changeCurrentPage({commit}, page){
+      try {
+        commit('setCurrentPage', page);
+      } catch (error) {
+        return console.error(error)
       }
     }
-
   },
 
   getters: {
@@ -89,6 +143,12 @@ export default new Vuex.Store({
     },
     dummyData: (state) => {
       return state.dummy
+    },
+    isLoading: (state)=>{
+      return state.isLoading
+    },
+    pagination:(state) => {
+      return state.pagination
     }
   },
 

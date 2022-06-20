@@ -12,17 +12,20 @@
           <span class="text-sm text-grey">{{
             $t("payment_list.header_information.order_number")
           }}</span>
-          <p class="text-base font-bold">KMZWAY87AA</p>
+          <p class="text-sm font-bold">KMZWAY87AA</p>
         </div>
       </div>
+
       <div class="header-right text-right">
         <p class="text-sm text-grey">
           {{ $t("payment_list.header_information.pay_before") }}
         </p>
-        <p class="text-base font-medium text-red">22 Apr 2020, 13:30:06</p>
+        <p class="text-sm font-medium text-red">22 Apr 2020, 13:30:06</p>
       </div>
     </div>
+
     <div class="line"></div>
+
     <div class="card-body">
       <div class="body-left">
         <div class="card-image">
@@ -33,16 +36,21 @@
           <p class="bank-account text-grey text-sm">008992189000</p>
         </div>
       </div>
-      <div class="total-purchase font-medium text-sm">
-        {{ $t("payment_list.card_information.total_purchase") }}
-        <span class="text-base text-orange font-bold">Rp1.890.000</span>
+
+      <div class="body-right">
+        <div class="total-purchase font-medium text-sm">
+          {{ $t("payment_list.card_information.total_purchase") }}
+          <span class="text-base text-orange font-bold">Rp1.890.000</span>
+        </div>
       </div>
     </div>
+
     <div class="btn-container">
       <div class="mobile total-purchase font-medium text-sm">
         {{ $t("payment_list.card_information.total_purchase") }}
         <span class="text-base text-orange font-bold">Rp1.890.000</span>
       </div>
+
       <Button
         :cta="$t('payment_list.card_information.how_to_pay')"
         bgColor="transparent"
@@ -88,7 +96,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 100%;
+  align-items: flex-end;
 }
 
 .card-header {
@@ -101,16 +109,14 @@ export default {
   align-items: center;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-
 .card-image {
   width: 100px;
-  height: auto;
+  margin: auto;
   margin-right: 30px;
+}
+
+.card-image img {
+  width: 100%;
 }
 
 .card-desc {
@@ -119,9 +125,15 @@ img {
   align-items: flex-start;
 }
 
-.total-purchase {
+.body-right {
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-right .total-purchase {
+  margin-right: 10px;
 }
 
 .btn-container .mobile.total-purchase {
@@ -146,9 +158,34 @@ img {
   align-items: flex-end;
 }
 
+@media only screen and (max-width: 375px) {
+  .card-desc {
+    align-items: flex-end;
+  }
+
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .body-left {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .card-image {
+    margin: auto 0px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .desktop {
     display: none;
+  }
+
+  .payment-card {
+    padding: 10px;
   }
 }
 
@@ -157,8 +194,13 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 10px;
+  }
+
+  button.button {
+    margin-top: 0;
+    padding: 5px 20px;
   }
 
   .total-purchase {
@@ -169,6 +211,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 50%;
   }
 
   .btn-container .mobile.total-purchase span {

@@ -101,6 +101,12 @@ export default {
   color: #015ca1;
 }
 
+@media only screen and (max-width: 375px) {
+  .ant-menu-submenu-title {
+    padding-left: 5px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .box-container {
     padding: 10px;

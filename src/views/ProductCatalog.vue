@@ -2,7 +2,7 @@
   <div class="product-catalog">
     <h2 class="title text-2xl">Katalog Kino Coin</h2>
     <div class="product-container">
-      <li v-for="product in products" :key="product.id">
+      <li v-for="product in pagination.showedItems" :key="product.id">
         <ProductCatalogCard
           :productId="product.id"
           :imgUrl="product.image"
@@ -11,11 +11,25 @@
         ></ProductCatalogCard>
       </li>
     </div>
+    <div class="pagination flex justify-center items-center">
+      <a-pagination
+        :class="[isLoading ? 'hidden' : '']"
+        v-model="pagination.current"
+        :defaultCurrent="1"
+        :pageSize="pagination.pageSize"
+        :total="pagination.totalCount"
+        @change="onPageChange"
+        @show-size-change="onShowSizeChange"
+      />
+    </div>
   </div>
 </template>
 <script>
 import ProductCatalogCard from "@/components/Cards/ProductCatalogCard";
+import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
+
+const API = "https://626b682ce5274e6664cba68e.mockapi.io/api/v1";
 
 export default {
   name: "ProductCatalog",
@@ -23,10 +37,17 @@ export default {
     ProductCatalogCard,
   },
   computed: {
-    ...mapGetters(["products"]),
+    ...mapGetters(["products", "isLoading", "pagination"]),
   },
   methods: {
-    ...mapActions(["fetchAllProducts"]),
+    ...mapActions(["fetchAllProducts", "changeCurrentPage"]),
+    onPageChange(page) {
+      this.changeCurrentPage(page);
+      this.fetchAllProducts();
+    },
+    onShowSizeChange(current, pageSize) {
+      console.log(current, pageSize);
+    },
   },
   created() {
     this.fetchAllProducts();

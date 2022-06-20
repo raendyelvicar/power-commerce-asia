@@ -72,9 +72,7 @@
       <a-spin :indicator="indicator" />
     </div>
     <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler">
-      <div slot="no-more" style="margin: 0 20px">
-        No more data
-      </div></infinite-loading
+      <div slot="no-more" style="margin: 0 20px">.</div></infinite-loading
     >
   </div>
 </template>
@@ -301,7 +299,7 @@ export default {
   background-color: #b0dfe5;
 }
 
-.pending-payment {
+.mobile.pending-payment {
   display: none;
 }
 
@@ -315,6 +313,7 @@ export default {
     border: none;
     border-radius: 5px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -332,7 +331,6 @@ export default {
     color: #ff0000;
     border: 1px #ff0000 solid;
     background-color: #ffe8ec;
-
     display: flex;
     align-items: center;
     position: absolute;

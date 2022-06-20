@@ -31,6 +31,7 @@
         >
       </div>
     </div>
+
     <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
       <Button
         :cta="$i18n.t('transactions.cta.order_received')"
@@ -49,14 +50,15 @@
         bgHover="#f4f4f4"
       ></Button>
     </div>
-    <div class="mobile">
-      <div class="total-purchase font-medium text-sm">
+
+    <div class="btn-container mobile">
+      <div class="mobile total-purchase font-medium text-sm">
         {{ $t("transactions.total_purchase") }}
         <span class="text-base text-orange font-bold"
           >Rp{{ product[0].price }}</span
         >
       </div>
-      <div class="btn-container mobile" v-if="status[0] === 'Pengiriman'">
+      <div class="btn-wrapper mobile" v-if="status[0] === 'Pengiriman'">
         <Button
           :cta="$i18n.t('transactions.cta.order_received')"
           bgColor="#ffffff"
@@ -65,7 +67,7 @@
           bgHover="#f4f4f4"
         ></Button>
       </div>
-      <div class="btn-container mobile" v-else-if="status[0] === 'Selesai'">
+      <div class="btn-wrapper mobile" v-else-if="status[0] === 'Selesai'">
         <Button
           :cta="$i18n.t('transactions.cta.buy_again')"
           bgColor="#ffffff"
@@ -178,7 +180,8 @@ img {
   align-items: flex-end;
 }
 
-.mobile {
+.btn-wrapper.mobile,
+.btn-container.mobile {
   display: none;
 }
 
@@ -203,27 +206,42 @@ img {
     margin: 10px;
   }
 
-  .mobile {
+  .btn-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
   }
 
-  .mobile .total-purchase {
-    align-items: flex-start;
-  }
-
-  .mobile .total-purchase span {
-    margin-left: 0;
+  button.button {
+    margin-top: 0;
+    padding: 5px 20px;
   }
 
   .total-purchase {
+    display: none;
+  }
+
+  .btn-container .mobile.total-purchase {
+    display: flex;
     flex-direction: column;
-    align-self: flex-end;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .btn-container .mobile.total-purchase span {
+    margin-left: 0;
   }
   .desktop {
     display: none;
+  }
+
+  .btn-container.mobile,
+  .btn-wrapper.mobile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 }
 </style>

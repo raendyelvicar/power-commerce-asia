@@ -1,19 +1,20 @@
 <template lang="">
   <div>
     <div class="desktop flex flex-col justify-center">
-      <div class="mySlides">
+      <div class="magnifier">
         <img :src="currentImageUrl" id="image-show" />
       </div>
 
-      <div class="row">
-        <div class="column" v-for="item in dummyData" :key="item.id">
-          <img
-            class="demo cursor"
-            :src="item.imgUrl"
-            style="width: 100%"
-            @click="changeImageUrl(item.imgUrl)"
-            alt="iPhone Product"
-          />
+      <div class="image-thumbnail">
+        <div class="row">
+          <div class="column" v-for="item in dummyData" :key="item.id">
+            <img
+              class="image-row"
+              :src="item.imgUrl"
+              @click="changeImageUrl(item.imgUrl)"
+              alt="iPhone Product"
+            />
+          </div>
         </div>
       </div>
 
@@ -32,7 +33,7 @@
         v-if="dummyData"
         v-bind="settingsImageSlider"
       >
-        <div class="mySlides" v-for="item in dummyData" :key="item.id">
+        <div class="magnifier" v-for="item in dummyData" :key="item.id">
           <img :src="item.imgUrl" />
         </div>
       </VueSlickCarousel>
@@ -72,7 +73,7 @@ export default {
       console.log(a, b, c);
     },
     zoomOnHover() {
-      let container = document.querySelector("div.mySlides");
+      let container = document.querySelector("div.magnifier");
       let img = document.querySelector("img#image-show");
 
       container.addEventListener("mousemove", onZoom);
@@ -93,20 +94,6 @@ export default {
       }
     },
     ...mapActions(["changeImageUrl"]),
-    showSlides(n) {
-      let i;
-      let dots = document.getElementsByClassName("demo");
-      if (n > this.products.length) {
-        this.slideIndex = 1;
-      }
-      if (n < 1) {
-        this.slideIndex = this.products.length;
-      }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      dots[this.slideIndex - 1].className += " active";
-    },
   },
   mounted() {
     this.zoomOnHover();
@@ -114,35 +101,64 @@ export default {
 };
 </script>
 <style>
-.mySlides {
+.magnifier {
   overflow: hidden;
   margin-bottom: 20px;
 }
 
-.mySlides img {
+.magnifier img {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.image-thumbnail {
+  position: relative;
+  min-height: 60px;
 }
 
 .row {
   display: flex;
+  flex-direction: row;
+  position: absolute;
   margin-bottom: 20px;
 }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
+.column {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  margin: 0 2px;
+  padding: 2px;
+  width: initial;
+  height: initial;
+  background: none;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.active,
-.demo:hover {
+button.button {
+  position: relative;
+}
+
+/* Add a transparency effect for thumnbail images */
+.image-row {
+  float: left;
+  opacity: 0.6;
+  display: block;
+  background: none;
+  width: initial;
+  height: initial;
+  max-width: 100%;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  animation-name: fade;
+  animation-duration: 800ms;
+}
+
+.image-row:hover {
   opacity: 1;
 }
 
@@ -160,6 +176,19 @@ export default {
     justify-content: center;
     flex-direction: row;
     width: 100%;
+  }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .image-thumbnail {
+    height: 140px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .image-thumbnail {
+    height: 80px;
   }
 }
 </style>

@@ -13,7 +13,7 @@
         style="margin-bottom: 20px"
       >
         <span slot="title" class="flex items-center">
-          <img src="@/assets/images/bni-logo.png" />
+          <img src="@/assets/images/bni-logo.png" class="logo-payment" />
           <span class="text-base text-black font-bold">BNI Mobile Banking</span>
         </span>
         <a-menu-item-group key="g1">
@@ -28,7 +28,7 @@
         style="margin-bottom: 20px"
       >
         <span slot="title" class="flex items-center">
-          <img src="@/assets/images/bni-logo.png" />
+          <img src="@/assets/images/bni-logo.png" class="logo-payment" />
           <span class="text-base text-black font-bold">ATM BNI</span>
         </span>
         <a-menu-item-group key="g2">
@@ -39,7 +39,7 @@
       </a-sub-menu>
       <a-sub-menu key="sub3" style="margin-bottom: 20px">
         <span slot="title" class="flex items-center">
-          <img src="@/assets/images/bni-logo.png" />
+          <img src="@/assets/images/bni-logo.png" class="logo-payment" />
           <span class="text-base text-black font-bold">I-Bank Personal</span>
         </span>
         <a-menu-item-group key="g3">
@@ -75,13 +75,13 @@ export default {
   },
 };
 </script>
-<style scoped>
-img {
+<style>
+.logo-payment {
   height: 30px;
   width: auto;
   margin-right: 20px;
 }
-.ant-menu-submenu-title {
-  padding-left: 0px;
+.ant-menu-submenu-title[style] {
+  padding-left: 0px !important;
 }
 </style>
