@@ -39,6 +39,13 @@ export default {
 };
 </script>
 <style>
+.cart-product {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 img {
   max-width: 100%;
   max-height: 100%;
