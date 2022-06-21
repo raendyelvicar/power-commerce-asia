@@ -22,6 +22,7 @@
             type="delete"
             theme="filled"
             :style="{ fontSize: '20px', opacity: '50%', cursor: 'pointer' }"
+            @click="() => showModal(true)"
           />
         </div>
       </div>
@@ -30,11 +31,15 @@
 </template>
 <script>
 import CounterItem from "@/components/Counter/CounterItem";
+import { mapActions } from "vuex";
 
 export default {
   name: "CartProduct",
   components: {
     CounterItem,
+  },
+  methods: {
+    ...mapActions(["showModal"]),
   },
 };
 </script>

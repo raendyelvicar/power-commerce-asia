@@ -11,6 +11,7 @@ export default new Vuex.Store({
       locale: selectedLocale,
       isLoading:true,
       products:[],
+      modalVisibility: false,
       pagination: {
         totalCount: 0,
         pageSize: 10,
@@ -83,6 +84,9 @@ export default new Vuex.Store({
     },
     setCurrentPage(state, page){
       state.pagination.current = page
+    },
+    setModalVisibility(state, newState){
+      state.modalVisibility = newState
     }
   },
 
@@ -127,6 +131,13 @@ export default new Vuex.Store({
       } catch (error) {
         return console.error(error)
       }
+    },
+    showModal({commit}, state){
+      try {
+        commit('setModalVisibility', state);
+      } catch (error) {
+        return console.error(error)
+      }
     }
   },
 
@@ -149,6 +160,9 @@ export default new Vuex.Store({
     },
     pagination:(state) => {
       return state.pagination
+    },
+    modalVisibility: (state) => {
+      return state.modalVisibility
     }
   },
 
