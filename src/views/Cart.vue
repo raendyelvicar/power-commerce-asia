@@ -4,19 +4,35 @@
     <div class="cart-list flex flex-col justify-center items-ends">
       <CartProduct />
       <CartProduct />
-      <CartProduct />
+    </div>
+    <div class="flex flex-row justify-between items-center w-full">
+      <p class="text-base font-bold">
+        Total Kino Coin
+        <span class="text-orange text-lg ml-2">400.000 Kino Coin</span>
+      </p>
+      <Button
+        cta="Beli"
+        bgColor="#015CA1"
+        borderColor="#015CA1"
+        textColor="#ffffff"
+        bgHover="#015CA1"
+        class="buy flex justify-center items-center text-base"
+        style="margin: 20px 10px; padding: 6px 60px"
+      />
     </div>
   </div>
 </template>
 <script>
 import CounterItem from "@/components/Counter/CounterItem";
 import CartProduct from "@/components/Cards/CartProduct";
+import Button from "@/components/Buttons/Button";
 
 export default {
   name: "Cart",
   components: {
     CounterItem,
     CartProduct,
+    Button,
   },
 };
 </script>
