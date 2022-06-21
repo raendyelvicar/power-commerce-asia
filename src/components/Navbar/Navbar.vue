@@ -14,6 +14,9 @@
           <a-menu-item key="product:2">
             <router-link to="/detail">Detail Produk</router-link></a-menu-item
           >
+          <a-menu-item key="product:3">
+            <router-link to="/cart">Keranjang</router-link></a-menu-item
+          >
         </a-menu-item-group>
       </a-sub-menu>
 

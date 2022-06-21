@@ -104,6 +104,14 @@ p{
     flex-wrap: wrap;
 }
 
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
 .flex-1{
     flex: 1;
 }
@@ -147,6 +155,311 @@ p{
 .m-auto{
     margin:auto;
 }
+
+.m-2{
+    margin:10px;
+}
+
+.m-4{
+    margin:20px;
+}
+
+.m-6{
+    margin:30px;
+}
+
+.m-8{
+    margin:40px;
+}
+
+.m-10{
+    margin:50px;
+}
+
+.mr-2{
+    margin-right:10px;
+}
+
+.mr-4{
+    margin-right:20px;
+}
+
+.mr-6{
+    margin-right:30px;
+}
+
+.mr-8{
+    margin-right:40px;
+}
+
+.mr-10{
+    margin-right:50px;
+}
+
+.ml-2{
+    margin-left:10px;
+}
+
+.ml-4{
+    margin-left:20px;
+}
+
+.ml-6{
+    margin-left:30px;
+}
+
+.ml-8{
+    margin-left:40px;
+}
+
+.ml-10{
+    margin-left:50px;
+}
+
+
+.mt-2{
+    margin-top:10px;
+}
+
+.mt-4{
+    margin-top:20px;
+}
+
+.mt-6{
+    margin-top:30px;
+}
+
+.mt-8{
+    margin-top:40px;
+}
+
+.mt-10{
+    margin-top:50px;
+}
+
+.mb-2{
+    margin-bottom:10px;
+}
+
+.mb-4{
+    margin-bottom:20px;
+}
+
+.mb-6{
+    margin-bottom:30px;
+}
+
+.mb-8{
+    margin-bottom:40px;
+}
+
+.mb-10{
+    margin-bottom:50px;
+}
+
+.mx-2{
+    margin-left:10px;
+    margin-right:10px
+}
+
+.mx-4{
+    margin-left:20px;
+    margin-right:20px
+}
+
+.mx-6{
+    margin-left:30px;
+    margin-right:30px
+}
+
+.mx-8{
+    margin-left:40px;
+    margin-right:40px
+}
+
+.mx-10{
+    margin-left:50px;
+    margin-right:50px
+}
+
+.my-2{
+    margin-top:10px;
+    margin-bottom:10px
+}
+
+.my-4{
+    margin-top:20px;
+    margin-bottom:20px
+}
+
+.my-6{
+    margin-top:30px;
+    margin-bottom:30px
+}
+
+.my-8{
+    margin-top:40px;
+    margin-bottom:40px
+}
+
+.my-10{
+    margin-top:50px;
+    margin-bottom:50px
+}
+
+
+.p-2{
+    padding:10px;
+}
+
+.p-4{
+    padding:20px;
+}
+
+.p-6{
+    padding:30px;
+}
+
+.p-8{
+    padding:40px;
+}
+
+.p-10{
+    padding:50px;
+}
+
+
+.pt-2{
+    padding-top:10px;
+}
+
+.pt-4{
+    padding-top:20px;
+}
+
+.pt-6{
+    padding-top:30px;
+}
+
+.pt-8{
+    padding-top:40px;
+}
+
+.pt-10{
+    padding-top:50px;
+}
+
+.pb-2{
+    padding-bottom:10px;
+}
+
+.pb-4{
+    padding-bottom:20px;
+}
+
+.pb-6{
+    padding-bottom:30px;
+}
+
+.pb-8{
+    padding-bottom:40px;
+}
+
+.pb-10{
+    padding-bottom:50px;
+}
+
+.pl-2{
+    padding-left:10px;
+}
+
+.pl-4{
+    padding-left:20px;
+}
+
+.pl-6{
+    padding-left:30px;
+}
+
+.pl-8{
+    padding-left:40px;
+}
+
+.pl-10{
+    padding-left:50px;
+}
+
+
+.pr-2{
+    padding-right:10px;
+}
+
+.pr-4{
+    padding-right:20px;
+}
+
+.pr-6{
+    padding-right:30px;
+}
+
+.pr-8{
+    padding-right:40px;
+}
+
+.pr-10{
+    padding-right:50px;
+}
+
+.px-2{
+    padding-left:10px;
+    padding-right:10px
+}
+
+.px-4{
+    padding-left:20px;
+    padding-right:20px
+}
+
+.px-6{
+    padding-left:30px;
+    padding-right:30px
+}
+
+.px-8{
+    padding-left:40px;
+    padding-right:40px
+}
+
+.px-10{
+    padding-left:50px;
+    padding-right:50px
+}
+
+.py-2{
+    padding-top:10px;
+    padding-bottom:10px
+}
+
+.py-4{
+    padding-top:20px;
+    padding-bottom:20px
+}
+
+.py-6{
+    padding-top:30px;
+    padding-bottom:30px
+}
+
+.py-8{
+    padding-top:40px;
+    padding-bottom:40px
+}
+
+.py-10{
+    padding-top:50px;
+    padding-bottom:50px
+}
+
 
 .text-grey{
     color: #929292;
@@ -225,43 +538,43 @@ p{
 
 @media only screen and (max-width: 375px) {
     .text-xs{
-        font-size: 0.75rem; /* 12px */
-        line-height: 1rem; /* 16px */
+        font-size: 0.75rem; 
+        line-height: 1rem; 
     }
     
     .text-sm, .button{
-        font-size: 0.75rem; /* 14px */
-        line-height: 1.25rem; /* 20px */
+        font-size: 0.75rem; 
+        line-height: 1.25rem; 
     }	
     
     .text-base{
-        font-size: 0.875rem; /* 16px */
-        line-height: 1.5rem; /* 24px */
+        font-size: 0.875rem; 
+        line-height: 1.5rem;
     }
     
     .text-lg{
-       font-size: 1rem; /* 18px */
-        line-height: 1.75rem; /* 28px */ 
+       font-size: 1rem; 
+        line-height: 1.75rem; 
     }	
     
     .text-xl	{
-        font-size: 1.125rem; /* 20px */
-        line-height: 1.75rem; /* 28px */
+        font-size: 1.125rem; 
+        line-height: 1.75rem; 
     }
     
     .text-2xl{
-        font-size: 1.25rem; /* 24px */
-        line-height: 2rem; /* 32px */
+        font-size: 1.25rem; 
+        line-height: 2rem; 
     }
     
     .text-3xl{
-        font-size: 1.5rem; /* 30px */
-        line-height: 2.25rem; /* 36px */
+        font-size: 1.5rem; 
+        line-height: 2.25rem; 
     }	
     
     .text-4xl{
-        font-size: 1.875rem; /* 36px */
-        line-height: 2.5rem; /* 40px */
+        font-size: 1.875rem; 
+        line-height: 2.5rem; 
     }
 }
 

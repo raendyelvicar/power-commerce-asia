@@ -1,10 +1,12 @@
 <template lang="">
-  <div class="transaction-card">
-    <div class="card-header">
+  <div
+    class="transaction-card flex flex-col justify-center w-full m-auto mb-4 p-4"
+  >
+    <div class="card-header items-center">
       <div class="header-left">
-        <h4 class="font-bold text-base" style="margin-right: 10px">
+        <p class="font-bold text-base mr-2">
           {{ orderId }}
-        </h4>
+        </p>
         <p class="text-base font-regular text-grey">22 Apr 2022</p>
       </div>
       <TransactionStatus :status="status[0]" v-if="$i18n.locale == 'id'" />
@@ -16,7 +18,7 @@
         <div class="card-image">
           <img src="@/assets/images/product_1512983332_Ellips_H_800x800.jpg" />
         </div>
-        <div class="card-desc">
+        <div class="card-desc flex flex-col justify-around items-start">
           <p class="product-name text-base font-bold">{{ product[0].name }}</p>
           <p class="product-amount text-sm text-grey">{{ amount }} CTN</p>
           <p class="product-size text-sm font-regular">
@@ -24,15 +26,18 @@
           </p>
         </div>
       </div>
-      <div class="total-purchase font-medium text-sm desktop">
+      <div class="total-purchase flex items-end font-medium text-sm desktop">
         {{ $t("transactions.total_purchase") }}
-        <span class="text-base text-orange font-bold"
+        <span class="text-base text-orange font-bold ml-2"
           >Rp{{ product[0].price }}</span
         >
       </div>
     </div>
 
-    <div class="btn-container desktop" v-if="status[0] === 'Pengiriman'">
+    <div
+      class="btn-container flex flex-col items-end desktop"
+      v-if="status[0] === 'Pengiriman'"
+    >
       <Button
         :cta="$i18n.t('transactions.cta.order_received')"
         bgColor="transparent"
@@ -41,7 +46,10 @@
         bgHover="#f4f4f4"
       ></Button>
     </div>
-    <div class="btn-container desktop" v-else-if="status[0] === 'Selesai'">
+    <div
+      class="btn-container flex flex-col items-end desktop"
+      v-else-if="status[0] === 'Selesai'"
+    >
       <Button
         :cta="$i18n.t('transactions.cta.buy_again')"
         bgColor="transparent"
@@ -114,15 +122,8 @@ export default {
 </script>
 <style scoped>
 .transaction-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  margin: auto;
-  margin-bottom: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  padding: 20px;
   border-radius: 10px;
 }
 
@@ -134,9 +135,6 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
-}
-.card-header {
-  align-items: center;
 }
 
 img {
@@ -150,34 +148,12 @@ img {
   height: 80px;
 }
 
-.card-desc {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-
-.total-purchase {
-  display: flex;
-  align-items: flex-end;
-}
-
-.total-purchase span {
-  margin-left: 10px;
-}
-
 .line {
   background: #dddddd;
   height: 2px;
   width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-.btn-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
 }
 
 .btn-wrapper.mobile,
@@ -196,10 +172,6 @@ img {
 
   .header-left h4 {
     margin: 0;
-  }
-
-  .header-left p {
-    font-size: 0.75rem;
   }
 
   .line {
