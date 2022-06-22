@@ -1,9 +1,12 @@
 <template lang="">
   <div class="cart-products">
     <h2 class="title text-2xl">Keranjang Kino Coin</h2>
-    <div class="cart-list flex flex-col justify-center items-ends">
-      <CartProduct />
-      <CartProduct />
+    <div
+      class="cart-list flex flex-col justify-center items-ends"
+      v-for="item in cartItems"
+      :key="item.id"
+    >
+      <CartProduct :product="item" />
     </div>
     <div class="flex flex-row justify-between items-center w-full">
       <p class="text-base font-bold">
@@ -21,25 +24,9 @@
       />
     </div>
 
-    <a-modal
-      centered
-      :visible="modalVisibility"
-      :footer="null"
-      :width="320"
-      @ok="() => showModal(false)"
-      @cancel="() => showModal(false)"
-    >
+    <a-modal centered :visible="modalVisibility" :footer="null" :width="320">
       <div class="flex flex-col justify-center items-center w-full">
-        <a-icon
-          type="delete"
-          theme="filled"
-          :style="{
-            fontSize: '56px',
-            opacity: '50%',
-            cursor: 'pointer',
-            margin: '10px',
-          }"
-        />
+        <Trash width="72px" height="72px" color="#c9c9c9" class="m-4" />
 
         <p class="text-base font-medium text-blue mb-2">
           Yakin ingin menghapus produk ini?
@@ -51,6 +38,7 @@
           textColor="#ffffff"
           bgHover="#015CA1"
           class="buy flex justify-center items-center text-base w-full mb-2"
+          @clickableEvent="() => showModal(false)"
         />
         <Button
           cta="Batalkan"
@@ -58,6 +46,7 @@
           borderColor="#015CA1"
           textColor="#015CA1"
           class="buy flex justify-center items-center text-base w-full mb-2"
+          @clickableEvent="() => showModal(false)"
         />
       </div>
     </a-modal>
@@ -67,6 +56,7 @@
 import CounterItem from "@/components/Counter/CounterItem";
 import CartProduct from "@/components/Cards/CartProduct";
 import Button from "@/components/Buttons/Button";
+import Trash from "@/components/Icons/Trash";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -75,9 +65,10 @@ export default {
     CounterItem,
     CartProduct,
     Button,
+    Trash,
   },
   computed: {
-    ...mapGetters(["modalVisibility"]),
+    ...mapGetters(["modalVisibility", "cartItems"]),
   },
   methods: {
     ...mapActions(["showModal"]),

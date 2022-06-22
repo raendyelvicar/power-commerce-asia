@@ -3,12 +3,7 @@
     <h2 class="title text-2xl">Katalog Kino Coin</h2>
     <div class="product-container">
       <li v-for="product in pagination.showedItems" :key="product.id">
-        <ProductCatalogCard
-          :productId="product.id"
-          :imgUrl="product.image"
-          :title="product.name"
-          :price="product.price"
-        ></ProductCatalogCard>
+        <ProductCatalogCard :product="product"></ProductCatalogCard>
       </li>
     </div>
     <div class="pagination flex justify-center items-center">

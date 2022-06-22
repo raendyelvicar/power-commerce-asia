@@ -1,11 +1,11 @@
 <template lang="">
   <div class="product-catalog-card">
     <div class="card-header w-full">
-      <img :src="imgUrl" />
+      <img :src="product.image" />
     </div>
     <div class="wrapper">
       <div class="card-body">
-        <p class="product-title text-sm w-full">{{ title }}</p>
+        <p class="product-title text-sm w-full">{{ product.name }}</p>
         <p
           class="product-price text-sm font-bold flex justify-center items-center"
         >
@@ -15,7 +15,7 @@
             color="#015CA1"
             style="margin-right: 5px"
           ></WalletStar>
-          {{ price }}
+          {{ product.price }}
         </p>
       </div>
       <Button
@@ -25,6 +25,7 @@
         textColor="#015CA1"
         bgHover="#f4f4f4"
         class="bucket flex justify-center items-center w-full"
+        @clickableEvent="() => addToCart(product)"
       >
         <Plus
           height="10px"
@@ -41,14 +42,18 @@
 import Button from "@/components/Buttons/Button";
 import Plus from "@/components/Icons/Plus";
 import WalletStar from "@/components/Icons/WalletStar";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "ProductCatalogCard",
-  props: ["productId", "imgUrl", "title", "price"],
+  props: ["product"],
   components: {
     Button,
     Plus,
     WalletStar,
+  },
+  methods: {
+    ...mapActions(["addToCart"]),
   },
 };
 </script>

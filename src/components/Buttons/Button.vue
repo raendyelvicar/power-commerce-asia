@@ -1,5 +1,5 @@
 <template lang="">
-  <button class="button" @click="redirectToUrl" :style="cssProps">
+  <button class="button" @click="clickableEvent" :style="cssProps">
     <slot name="icon"> </slot>
     {{ cta }}
   </button>
@@ -17,8 +17,8 @@ export default {
     "icon",
   ],
   methods: {
-    redirectToUrl() {
-      window.location.href = this.url;
+    clickableEvent() {
+      this.$emit("clickableEvent");
     },
   },
   computed: {

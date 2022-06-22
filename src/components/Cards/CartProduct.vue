@@ -6,22 +6,22 @@
       </div>
       <div class="product-information pr-4 ml-4">
         <p class="text-base font-medium">
-          iPhone 12 Mini 64 GB - Anim occaecat amet exercitation amet commodo
-          culpa.
+          {{ product.name }}
         </p>
         <p class="text-base text-grey">Unit: PCS</p>
-        <p class="text-lg text-orange font-medium">150.000</p>
+        <p class="text-lg text-orange font-medium">{{ product.price }}</p>
       </div>
     </div>
     <div class="counter-wrapper flex flex-row justify-end items-end">
       <div class="bottom-placement flex flex-row justify-center items-center">
         <p class="text-base font-medium">Jumlah</p>
-        <CounterItem />
+        <CounterItem :quantity="product.quantity" :product="product" />
         <div class="delete-icon relative w-full ml-6">
-          <a-icon
-            type="delete"
-            theme="filled"
-            :style="{ fontSize: '20px', opacity: '50%', cursor: 'pointer' }"
+          <Trash
+            width="20px"
+            height="20px"
+            color="#c9c9c9"
+            class="m-4"
             @click="() => showModal(true)"
           />
         </div>
@@ -31,12 +31,15 @@
 </template>
 <script>
 import CounterItem from "@/components/Counter/CounterItem";
+import Trash from "@/components/Icons/Trash";
 import { mapActions } from "vuex";
 
 export default {
   name: "CartProduct",
+  props: ["product"],
   components: {
     CounterItem,
+    Trash,
   },
   methods: {
     ...mapActions(["showModal"]),
@@ -60,15 +63,5 @@ img {
 .image-container {
   width: auto;
   height: 80px;
-}
-
-.delete-icon::before {
-  content: "";
-  width: 1px;
-  height: 130%;
-  position: absolute;
-  background-color: #333333;
-  left: -130%;
-  bottom: 10;
 }
 </style>

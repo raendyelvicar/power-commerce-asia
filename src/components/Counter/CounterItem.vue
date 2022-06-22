@@ -2,47 +2,28 @@
   <div class="counter-item flex items-center justify-end">
     <a-icon
       type="minus-circle"
-      :style="{
-        fontSize: '26px',
-        fontWeight: '700',
-        color: '#015CA1',
-      }"
-      @click="decrement"
+      :style="{ fontSize: '26px', fontWeight: '700', color: '#015CA1' }"
+      @click="() => changeQuantityItem(product, 'decrease')"
     />
     <span class="text-lg font-bold">
-      {{ number }}
+      {{ quantity }}
     </span>
     <a-icon
       type="plus-circle"
       theme="filled"
-      :style="{
-        fontSize: '26px',
-        fontWeight: '700',
-        color: '#015CA1',
-      }"
-      @click="increment"
+      :style="{ fontSize: '26px', fontWeight: '700', color: '#015CA1' }"
+      @click="() => changeQuantityItem(product, 'increase')"
     />
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "CounterItem",
-  data() {
-    return {
-      number: 0,
-    };
-  },
+  props: ["quantity", "product"],
   methods: {
-    increment() {
-      this.number += 1;
-    },
-    decrement() {
-      if (this.number === 0) {
-        return;
-      }
-
-      this.number -= 1;
-    },
+    ...mapActions(["changeQuantityItem"]),
   },
 };
 </script>

@@ -11,6 +11,7 @@ export default new Vuex.Store({
       locale: selectedLocale,
       isLoading:true,
       products:[],
+      cart:[],
       modalVisibility: false,
       pagination: {
         totalCount: 0,
@@ -87,6 +88,31 @@ export default new Vuex.Store({
     },
     setModalVisibility(state, newState){
       state.modalVisibility = newState
+    },
+    addToCart(state, product){
+      let item = state.cart.find(i => i.id == product.id);
+      let currentProduct = state.products.find(p => p.id === product.id);
+
+      if(item){
+        item.quantity++;
+      } else {
+        state.cart.push({...product, quantity:1});
+      }
+
+      currentProduct.stock--;
+    },
+    setQuantityItem(state, { product, opt }){
+      console.log(opt);
+      let item = state.cart.find(i => i.id === product.id);
+      if(item) {
+        if(opt === "increase"){
+          item.quantity++;
+          console.log("increase");
+        } else if(opt === "decrease"){
+          item.quantity--;
+          console.log("decrease");
+        }
+      }
     }
   },
 
@@ -138,6 +164,16 @@ export default new Vuex.Store({
       } catch (error) {
         return console.error(error)
       }
+    },
+    addToCart({commit}, product){
+      try {
+        commit('addToCart', product);
+      } catch (error) {
+        return console.error(error);
+      }
+    },
+    changeQuantityItem({commit}, payload){
+      console.log(payload);     
     }
   },
 
@@ -163,6 +199,15 @@ export default new Vuex.Store({
     },
     modalVisibility: (state) => {
       return state.modalVisibility
+    },
+    productQuantity: (state) => (product) => {
+      const item = state.cart.find(i => i.id === product.id);
+
+      if(item) return item.quantity
+      else return null
+    },
+    cartItems: (state) => {
+      return state.cart
     }
   },
 
