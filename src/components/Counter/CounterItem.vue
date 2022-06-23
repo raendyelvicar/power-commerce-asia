@@ -3,7 +3,7 @@
     <a-icon
       type="minus-circle"
       :style="{ fontSize: '26px', fontWeight: '700', color: '#015CA1' }"
-      @click="() => changeQuantityItem(product, 'decrease')"
+      @click="() => changeQuantityItem({ product: product, opt: 'decrease' })"
     />
     <span class="text-lg font-bold">
       {{ quantity }}
@@ -12,7 +12,7 @@
       type="plus-circle"
       theme="filled"
       :style="{ fontSize: '26px', fontWeight: '700', color: '#015CA1' }"
-      @click="() => changeQuantityItem(product, 'increase')"
+      @click="() => changeQuantityItem({ product: product, opt: 'increase' })"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import { mapActions } from "vuex";
 
 export default {
   name: "CounterItem",
-  props: ["quantity", "product"],
+  props: ["quantity", "product", "active"],
   methods: {
     ...mapActions(["changeQuantityItem"]),
   },

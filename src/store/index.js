@@ -1,6 +1,6 @@
 import axios from "axios";
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { Store } from "vuex";
 import createPersistedState from 'vuex-persistedstate';
 import i18n, { selectedLocale }  from "../i18n";
 
@@ -102,17 +102,29 @@ export default new Vuex.Store({
       currentProduct.stock--;
     },
     setQuantityItem(state, { product, opt }){
-      console.log(opt);
       let item = state.cart.find(i => i.id === product.id);
       if(item) {
         if(opt === "increase"){
           item.quantity++;
-          console.log("increase");
+          item.stock--;
         } else if(opt === "decrease"){
+          if(item.quantity === 0){
+            return;
+          }
           item.quantity--;
-          console.log("decrease");
+          item.stock++;
         }
       }
+    },
+    removeCartItem(state, {id, getters}){
+      let item = getters.cartItemById(id);
+
+      if(item){
+        const indexToRemove = state.cart.findIndex(p => p.id === id);
+        state.cart.splice(indexToRemove, 1);
+      }
+
+      state.modalVisibility = false;
     }
   },
 
@@ -158,9 +170,9 @@ export default new Vuex.Store({
         return console.error(error)
       }
     },
-    showModal({commit}, state){
+    showModal({commit}, status){
       try {
-        commit('setModalVisibility', state);
+        commit('setModalVisibility', status);
       } catch (error) {
         return console.error(error)
       }
@@ -172,8 +184,19 @@ export default new Vuex.Store({
         return console.error(error);
       }
     },
-    changeQuantityItem({commit}, payload){
-      console.log(payload);     
+    removeFromCart({commit, getters}, id){
+      try {
+        commit('removeCartItem', {id, getters});
+      } catch (error) {
+        return console.error(error);
+      } 
+    },
+    changeQuantityItem({commit}, { product, opt }){
+      try {
+        commit('setQuantityItem', { product, opt });
+      } catch (error) {
+        return console.error(error);
+      }    
     }
   },
 
@@ -184,6 +207,9 @@ export default new Vuex.Store({
     },
     productById: (state) => (id) => {
       return state.products.find(product => product.id === id)
+    },
+    cartItemById: state => (id) => {
+      return state.cart.find(item => item.id === id);
     },
     currentImageUrl: (state) => {
       return state.currentImageUrl
@@ -206,7 +232,7 @@ export default new Vuex.Store({
       if(item) return item.quantity
       else return null
     },
-    cartItems: (state) => {
+    cart: (state) => {
       return state.cart
     }
   },
