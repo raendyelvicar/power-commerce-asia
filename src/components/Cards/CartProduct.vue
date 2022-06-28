@@ -2,7 +2,7 @@
   <div class="cart-product flex flex-row justify-between">
     <div class="flex flex-row justify-center items-center">
       <div class="image-container flex">
-        <img src="@/assets/images/products/iphone_1.jpg" />
+        <img :src="product.image" />
       </div>
       <div class="product-information pr-4 ml-4">
         <p class="text-base font-medium">
@@ -18,10 +18,9 @@
         <CounterItem :quantity="product.quantity" :product="product" />
         <div
           class="delete-icon relative w-full ml-6"
-          @click="() => showModal(true)"
+          @click="pushToBin(product)"
         >
           <Trash
-            :id="product.id"
             width="20px"
             height="20px"
             color="#c9c9c9"
@@ -30,32 +29,6 @@
         </div>
       </div>
     </div>
-    <a-modal centered :visible="modalVisibility" :footer="null" :width="320">
-      <div class="flex flex-col justify-center items-center w-full">
-        <Trash width="72px" height="72px" color="#c9c9c9" class="m-4" />
-
-        <p class="text-base font-medium text-blue mb-2">
-          Yakin ingin menghapus produk ini?
-        </p>
-        <Button
-          cta="Hapus"
-          bgColor="#015CA1"
-          borderColor="#015CA1"
-          textColor="#ffffff"
-          bgHover="#015CA1"
-          class="buy flex justify-center items-center text-base w-full mb-2"
-          @clickableEvent="() => removeFromCart(product.id)"
-        />
-        <Button
-          cta="Batalkan"
-          bgColor="#ffffff"
-          borderColor="#015CA1"
-          textColor="#015CA1"
-          class="buy flex justify-center items-center text-base w-full mb-2"
-          @clickableEvent="() => showModal(false)"
-        />
-      </div>
-    </a-modal>
   </div>
 </template>
 <script>
@@ -76,7 +49,7 @@ export default {
     ...mapGetters(["modalVisibility"]),
   },
   methods: {
-    ...mapActions(["showModal", "removeFromCart"]),
+    ...mapActions(["pushToBin"]),
   },
 };
 </script>

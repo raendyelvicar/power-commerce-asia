@@ -12,6 +12,7 @@ export default new Vuex.Store({
       isLoading:true,
       products:[],
       cart:[],
+      bin:[],
       modalVisibility: false,
       pagination: {
         totalCount: 0,
@@ -54,15 +55,19 @@ export default new Vuex.Store({
       state.locale = newLocale;
       localStorage.setItem("lang", newLocale);
     },
+
     setProducts(state, data){
       state.products = data;
     },
+
     setCurrentImageUrl(state, newState){
       state.currentImageUrl = newState;
     },
+
     setLoadingState(state, newState){
       state.isLoading = newState;
     },
+
     setPagination(state, data) {
       let paginate = state.pagination;
       paginate.totalCount = data.length;
@@ -86,9 +91,11 @@ export default new Vuex.Store({
     setCurrentPage(state, page){
       state.pagination.current = page
     },
+
     setModalVisibility(state, newState){
-      state.modalVisibility = newState
+      state.modalVisibility = newState;
     },
+
     addToCart(state, product){
       let item = state.cart.find(i => i.id == product.id);
       let currentProduct = state.products.find(p => p.id === product.id);
@@ -101,6 +108,7 @@ export default new Vuex.Store({
 
       currentProduct.stock--;
     },
+
     setQuantityItem(state, { product, opt }){
       let item = state.cart.find(i => i.id === product.id);
       if(item) {
@@ -116,15 +124,22 @@ export default new Vuex.Store({
         }
       }
     },
-    removeCartItem(state, {id, getters}){
-      let item = getters.cartItemById(id);
 
-      if(item){
-        const indexToRemove = state.cart.findIndex(p => p.id === id);
+    removeCartItem(state, status){
+      let item = state.bin[0];
+      
+      if(status){
+        const indexToRemove = state.cart.findIndex(p => p.id === item.id);
         state.cart.splice(indexToRemove, 1);
       }
 
+      while (state.bin.length) { state.bin.pop(); }
+
       state.modalVisibility = false;
+    },
+
+    addItemToBin(state, product){
+      state.bin.push(product);
     }
   },
 
@@ -133,6 +148,7 @@ export default new Vuex.Store({
       i18n.locale = newLocale
       commit('updateLocale', newLocale)
     },
+
     async fetchAllProducts({ commit }) {
       try {
         await axios.get("https://626b682ce5274e6664cba68e.mockapi.io/api/v1/products").then(function (response) {
@@ -149,6 +165,7 @@ export default new Vuex.Store({
         return console.error(error);
       }
     },
+
     async changeImageUrl({commit}, newState){
       try {
         commit('setCurrentImageUrl', newState);
@@ -156,6 +173,7 @@ export default new Vuex.Store({
         return console.error(error);
       }
     },
+
     changeLoadingState({commit}, newState) {
       try {
         commit('setLoadingState', newState);
@@ -163,6 +181,7 @@ export default new Vuex.Store({
         return console.error(error);
       }
     },
+
     changeCurrentPage({commit}, page){
       try {
         commit('setCurrentPage', page);
@@ -170,6 +189,7 @@ export default new Vuex.Store({
         return console.error(error)
       }
     },
+
     showModal({commit}, status){
       try {
         commit('setModalVisibility', status);
@@ -177,6 +197,7 @@ export default new Vuex.Store({
         return console.error(error)
       }
     },
+
     addToCart({commit}, product){
       try {
         commit('addToCart', product);
@@ -184,19 +205,30 @@ export default new Vuex.Store({
         return console.error(error);
       }
     },
-    removeFromCart({commit, getters}, id){
+
+    removeFromCart({commit}, status){
       try {
-        commit('removeCartItem', {id, getters});
+        commit('removeCartItem', status);
       } catch (error) {
         return console.error(error);
       } 
     },
+
     changeQuantityItem({commit}, { product, opt }){
       try {
         commit('setQuantityItem', { product, opt });
       } catch (error) {
         return console.error(error);
       }    
+    },
+
+    pushToBin({commit}, product){
+      try {
+        commit('addItemToBin', product);
+        commit('setModalVisibility', true);
+       } catch (error) {
+        return console.error(error);
+      } 
     }
   },
 

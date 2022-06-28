@@ -33,6 +33,32 @@
     >
       Keranjang belanjamu kosong
     </div>
+    <a-modal centered :visible="modalVisibility" :footer="null" :width="320">
+      <div class="flex flex-col justify-center items-center w-full">
+        <Trash width="72px" height="72px" color="#c9c9c9" class="m-4" />
+
+        <p class="text-base font-medium text-blue mb-2">
+          Yakin ingin menghapus produk ini?
+        </p>
+        <Button
+          cta="Hapus"
+          bgColor="#015CA1"
+          borderColor="#015CA1"
+          textColor="#ffffff"
+          bgHover="#015CA1"
+          class="flex justify-center items-center text-base w-full mb-2"
+          @clickableEvent="removeFromCart(true)"
+        />
+        <Button
+          cta="Batalkan"
+          bgColor="#ffffff"
+          borderColor="#015CA1"
+          textColor="#015CA1"
+          class="flex justify-center items-center text-base w-full mb-2"
+          @clickableEvent="() => showModal(false)"
+        />
+      </div>
+    </a-modal>
   </div>
 </template>
 <script>
@@ -51,7 +77,10 @@ export default {
     Trash,
   },
   computed: {
-    ...mapGetters(["cart"]),
+    ...mapGetters(["cart", "modalVisibility"]),
+  },
+  methods: {
+    ...mapActions(["showModal", "removeFromCart"]),
   },
 };
 </script>
