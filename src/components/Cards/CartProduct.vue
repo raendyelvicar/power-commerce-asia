@@ -1,6 +1,6 @@
 <template lang="">
-  <div class="cart-product flex flex-row justify-between">
-    <div class="flex flex-row justify-center items-center">
+  <div class="cart-product">
+    <div class="flex flex-row justify-start items-center w-full">
       <div class="image-container flex">
         <img :src="product.image" />
       </div>
@@ -12,19 +12,16 @@
         <p class="text-lg text-orange font-medium">{{ product.price }}</p>
       </div>
     </div>
-    <div class="counter-wrapper flex flex-row justify-end items-end">
-      <div class="bottom-placement flex flex-row justify-center items-center">
+    <div class="counter-wrapper flex flex-row justify-end items-end w-full">
+      <div class="bottom-placement">
         <p class="text-base font-medium">Jumlah</p>
         <CounterItem :quantity="product.quantity" :product="product" />
-        <div
-          class="delete-icon relative w-full ml-6"
-          @click="pushToBin(product)"
-        >
+        <div class="delete-icon" @click="pushToBin(product)">
           <Trash
             width="20px"
             height="20px"
             color="#c9c9c9"
-            class="m-4 cursor-pointer"
+            class="trash-icon cursor-pointer"
           />
         </div>
       </div>
@@ -60,7 +57,12 @@ export default {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
 img {
   max-width: 100%;
   max-height: 100%;
@@ -69,6 +71,71 @@ img {
 
 .image-container {
   width: auto;
-  height: 80px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.trash-icon {
+  margin: 20px;
+}
+
+.delete-icon {
+  position: relative;
+  margin-left: 30px;
+  width: 100%;
+}
+.bottom-placement {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .cart-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 10px;
+  }
+
+  .counter-wrapper {
+    position: relative;
+  }
+
+  .delete-icon {
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+  }
+
+  .trash-icon {
+    margin: 5px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bottom-placement {
+    flex-direction: row-reverse;
+  }
+
+  .bottom-placement p {
+    display: none;
+  }
+
+  .image-container img {
+    border-radius: 5px;
+  }
+
+  .counter-wrapper {
+    margin-top: 10px;
+  }
 }
 </style>

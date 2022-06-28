@@ -55,7 +55,7 @@
           borderColor="#015CA1"
           textColor="#015CA1"
           class="flex justify-center items-center text-base w-full mb-2"
-          @clickableEvent="() => showModal(false)"
+          @clickableEvent="removeFromCart(false)"
         />
       </div>
     </a-modal>

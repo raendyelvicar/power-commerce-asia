@@ -36,4 +36,10 @@ export default {
   margin: auto 20px;
   text-align: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .counter-item .anticon {
+    margin: 0 5px;
+  }
+}
 </style>
