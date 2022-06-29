@@ -25,7 +25,7 @@
         textColor="#015CA1"
         bgHover="#f4f4f4"
         class="bucket flex justify-center items-center w-full"
-        @clickableEvent="() => addToCart(product)"
+        @clickableEvent="addItemToCart"
       >
         <Plus
           height="10px"
@@ -54,6 +54,10 @@ export default {
   },
   methods: {
     ...mapActions(["addToCart"]),
+    addItemToCart() {
+      let res = this.addToCart(this.product);
+      if (res) this.$message.info("Item berhasil ditambahkan");
+    },
   },
 };
 </script>

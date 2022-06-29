@@ -201,6 +201,7 @@ export default new Vuex.Store({
     addToCart({commit}, product){
       try {
         commit('addToCart', product);
+        return true;
       } catch (error) {
         return console.error(error);
       }

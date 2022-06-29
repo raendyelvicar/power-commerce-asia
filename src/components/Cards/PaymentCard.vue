@@ -57,7 +57,7 @@
         borderColor="#015CA1"
         textColor="#015CA1"
         bgHover="#f4f4f4"
-        url="/how-to-pay"
+        @clickableEvent="redirectToUrl"
       ></Button>
     </div>
   </div>
@@ -73,6 +73,11 @@ export default {
   components: {
     Button,
     Wallet,
+  },
+  methods: {
+    redirectToUrl() {
+      window.location.href = "/how-to-pay";
+    },
   },
 };
 </script>
