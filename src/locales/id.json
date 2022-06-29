@@ -39,5 +39,33 @@
     "dropdown_payment": {
       "payment_instructions": "Instruksi Pembayaran"
     }
-  }
+  },
+  "product": [
+    {
+      "product_catalog": {
+        "catalog_kino_coin": "Katalog Kino Coin",
+        "add_to_cart": "Keranjang",
+        "item_added_success": "Item berhasil ditambahkan"
+      }
+    },
+    {
+      "detail_product": {
+        "add_to_cart": "Keranjang",
+        "back": "Kembali",
+        "see_more": "Lihat lebih banyak"
+      }
+    },
+    {
+      "cart": {
+        "cart_kino_coin": "Keranjang Kino Coin",
+        "buy": "Beli",
+        "checkout": "Beli",
+        "quantity": "Jumlah",
+        "remove_item_question": "Yakin ingin menghapus item ini?",
+        "remove_item": "Hapus",
+        "cancel": "Batalkan",
+        "empty_cart": "Keranjang belanja anda kosong"
+      }
+    }
+  ]
 }

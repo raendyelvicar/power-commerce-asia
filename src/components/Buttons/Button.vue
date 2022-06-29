@@ -37,7 +37,6 @@ export default {
 .button {
   color: var(--text-color);
   font-weight: 600;
-  margin-top: 20px;
   padding: 6px 30px;
   border: 1px var(--border-color) solid;
   background-color: var(--bg-color);

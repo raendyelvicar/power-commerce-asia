@@ -1,6 +1,8 @@
 <template lang="">
   <div class="product-catalog">
-    <h2 class="title text-2xl">Katalog Kino Coin</h2>
+    <h2 class="title text-2xl">
+      {{ $t("product[0].product_catalog.catalog_kino_coin") }}
+    </h2>
     <div class="product-container">
       <li v-for="product in pagination.showedItems" :key="product.id">
         <ProductCatalogCard :product="product"></ProductCatalogCard>

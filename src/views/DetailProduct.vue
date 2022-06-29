@@ -4,8 +4,7 @@
 
     <div class="product-information flex flex-col">
       <h3 class="product-title text-2xl font-bold" style="margin-bottom: 0">
-        iPhone 12 Mini 64 GB - Culpa ea voluptate dolor deserunt ex nostrud
-        magna velit consectetur eu amet.
+        {{ product.name }}
       </h3>
 
       <div class="line"></div>
@@ -25,17 +24,17 @@
           >
             <WalletStar height="30px" width="30px" color="#015CA1"></WalletStar>
           </div>
-          <p class="text-2xl font-bold text-orange">250.000</p>
+          <p class="text-2xl font-bold text-orange">{{ product.price }}</p>
         </div>
       </div>
 
       <div class="line"></div>
 
       <div class="product-description text-sm text-justify font-medium">
-        Id officia eu nisi culpa ipsum sint. Id voluptate in cupidatat officia
-        eiusmod. Laborum aliquip Lorem et veniam ea qui fugiat quis non nulla
-        duis irure ullamco. Commodo sunt proident qui sint sunt qui pariatur est
-        excepteur.
+        Occaecat irure est nisi fugiat officia velit labore in dolore eu
+        laboris. Dolore laboris proident sunt ea excepteur veniam. Ut
+        reprehenderit ullamco minim do aliquip veniam nostrud pariatur dolor
+        culpa laboris occaecat.
       </div>
 
       <div class="notes text-xs text-justify font-bold bg-blue-baby">
@@ -45,23 +44,25 @@
 
       <div class="btn-container flex flex-row">
         <Button
-          cta="Kembali"
+          :cta="$i18n.t('product[1].detail_product.back')"
           bgColor="#ffffff"
           borderColor="#015CA1"
           textColor="#015CA1"
           bgHover="#f4f4f4"
           class="back flex justify-center items-center"
           style="margin: 20px 10px"
+          @clickableEvent="returnToCatalog"
         >
         </Button>
         <Button
-          cta="Keranjang"
+          :cta="$i18n.t('product[1].detail_product.add_to_cart')"
           bgColor="#015CA1"
           borderColor="#015CA1"
           textColor="#ffffff"
           bgHover="#015CA1"
           class="bucket flex justify-center items-center"
           style="margin: 20px 10px"
+          @clickableEvent="addItemToCart"
         >
           <Plus
             height="10px"
@@ -80,6 +81,7 @@ import Slideshow from "@/components/Slideshow/Slideshow";
 import Plus from "@/components/Icons/Plus";
 import WalletStar from "@/components/Icons/WalletStar";
 import Button from "@/components/Buttons/Button";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "DetailProduct",
@@ -88,6 +90,34 @@ export default {
     Plus,
     WalletStar,
     Button,
+  },
+  data() {
+    return {
+      id: 0,
+      product: [],
+    };
+  },
+  methods: {
+    ...mapActions(["addToCart"]),
+    addItemToCart() {
+      let res = this.addToCart(this.product);
+      if (res)
+        this.$message.info(
+          this.$i18n.t("product[0].product_catalog.item_added_success")
+        );
+    },
+    getProductById() {
+      this.product = this.productById(this.$route.params.id);
+    },
+    returnToCatalog() {
+      window.location.href = "/catalog";
+    },
+  },
+  computed: {
+    ...mapGetters(["productById"]),
+  },
+  mounted() {
+    this.getProductById();
   },
 };
 </script>

@@ -14,7 +14,9 @@
     </div>
     <div class="counter-wrapper flex flex-row justify-end items-end w-full">
       <div class="bottom-placement">
-        <p class="text-base font-medium">Jumlah</p>
+        <p class="text-base font-medium">
+          {{ $t("product[2].cart.quantity") }}
+        </p>
         <CounterItem :quantity="product.quantity" :product="product" />
         <div class="delete-icon" @click="pushToBin(product)">
           <Trash

@@ -1,6 +1,6 @@
 <template lang="">
   <div class="cart-products">
-    <h2 class="title text-2xl">Keranjang Kino Coin</h2>
+    <h2 class="title text-2xl">{{ $t("product[2].cart.cart_kino_coin") }}</h2>
     <div
       class="cart-list flex flex-col justify-center items-ends"
       v-for="item in cart"
@@ -17,7 +17,7 @@
         <span class="text-orange text-lg ml-2">400.000 Kino Coin</span>
       </p>
       <Button
-        cta="Beli"
+        :cta="$i18n.t('product[2].cart.checkout')"
         bgColor="#015CA1"
         borderColor="#015CA1"
         textColor="#ffffff"
@@ -31,17 +31,17 @@
       style="height: 60vh"
       v-else
     >
-      Keranjang belanjamu kosong
+      {{ $t("product[2].cart.empty_cart") }}
     </div>
     <a-modal centered :visible="modalVisibility" :footer="null" :width="320">
       <div class="flex flex-col justify-center items-center w-full">
         <Trash width="72px" height="72px" color="#c9c9c9" class="m-4" />
 
-        <p class="text-base font-medium text-blue mb-2">
-          Yakin ingin menghapus produk ini?
+        <p class="text-base font-medium text-blue mb-2 text-center">
+          {{ $t("product[2].cart.remove_item_question") }}
         </p>
         <Button
-          cta="Hapus"
+          :cta="$i18n.t('product[2].cart.remove_item')"
           bgColor="#015CA1"
           borderColor="#015CA1"
           textColor="#ffffff"
@@ -50,7 +50,7 @@
           @clickableEvent="removeFromCart(true)"
         />
         <Button
-          cta="Batalkan"
+          :cta="$i18n.t('product[2].cart.cancel')"
           bgColor="#ffffff"
           borderColor="#015CA1"
           textColor="#015CA1"

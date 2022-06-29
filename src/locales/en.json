@@ -33,5 +33,33 @@
     "dropdown_payment": {
       "payment_instructions": "Payment Instructions  "
     }
-  }
+  },
+  "product": [
+    {
+      "product_catalog": {
+        "catalog_kino_coin": "Catalog Kino Coin",
+        "add_to_cart": "Add to cart",
+        "item_added_success": "Added successfully to Cart"
+      }
+    },
+    {
+      "detail_product": {
+        "add_to_cart": "Add to cart",
+        "back": "Back",
+        "see_more": "See More"
+      }
+    },
+    {
+      "cart": {
+        "cart_kino_coin": "Cart Kino Coin",
+        "buy": "Buy Now",
+        "checkout": "Checkout",
+        "quantity": "Quantity",
+        "remove_item_question": "Are you sure you want to remove this item?",
+        "remove_item": "Remove Item",
+        "cancel": "Cancel",
+        "empty_cart": "Your shopping cart is empty"
+      }
+    }
+  ]
 }

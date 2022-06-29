@@ -1,10 +1,10 @@
 <template lang="">
   <div class="product-catalog-card">
-    <div class="card-header w-full">
-      <img :src="product.image" />
-    </div>
-    <div class="wrapper">
-      <div class="card-body">
+    <div class="wrapper" @click="seeDetailProduct">
+      <div class="card-header w-full">
+        <img :src="product.image" />
+      </div>
+      <div class="card-body p-2">
         <p class="product-title text-sm w-full">{{ product.name }}</p>
         <p
           class="product-price text-sm font-bold flex justify-center items-center"
@@ -18,8 +18,10 @@
           {{ product.price }}
         </p>
       </div>
+    </div>
+    <div class="button-container p-2">
       <Button
-        cta="Keranjang"
+        :cta="$i18n.t('product[0].product_catalog.add_to_cart')"
         bgColor="transparent"
         borderColor="#015CA1"
         textColor="#015CA1"
@@ -54,9 +56,15 @@ export default {
   },
   methods: {
     ...mapActions(["addToCart"]),
+    seeDetailProduct() {
+      window.location.href = "/products/" + this.product.id;
+    },
     addItemToCart() {
       let res = this.addToCart(this.product);
-      if (res) this.$message.info("Item berhasil ditambahkan");
+      if (res)
+        this.$message.info(
+          this.$i18n.t("product[0].product_catalog.item_added_success")
+        );
     },
   },
 };
@@ -88,10 +96,6 @@ export default {
   object-fit: cover;
 }
 
-.wrapper {
-  padding: 10px;
-}
-
 .card-body {
   display: flex;
   justify-content: space-between;
@@ -107,10 +111,6 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-button.button {
-  margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {

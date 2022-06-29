@@ -19,11 +19,12 @@
       </div>
 
       <Button
-        cta="Lihat lebih banyak"
+        :cta="$i18n.t('product[1].detail_product.see_more')"
         bgColor="transparent"
         borderColor="#015CA1"
         textColor="#015CA1"
         bgHover="#f4f4f4"
+        style="margin-top: 20px"
       ></Button>
     </div>
 
@@ -183,6 +184,12 @@ button.button {
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
   .image-thumbnail {
     height: 140px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .image-thumbnail {
+    height: 50px;
   }
 }
 

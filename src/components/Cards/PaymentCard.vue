@@ -58,6 +58,7 @@
         textColor="#015CA1"
         bgHover="#f4f4f4"
         @clickableEvent="redirectToUrl"
+        class="mt-4"
       ></Button>
     </div>
   </div>
