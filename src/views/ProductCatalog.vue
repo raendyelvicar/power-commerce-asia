@@ -26,8 +26,6 @@ import ProductCatalogCard from "@/components/Cards/ProductCatalogCard";
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 
-const API = "https://626b682ce5274e6664cba68e.mockapi.io/api/v1";
-
 export default {
   name: "ProductCatalog",
   components: {
@@ -67,5 +65,11 @@ li {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
   margin: auto;
+}
+
+@media only screen and (max-width: 425px) {
+  .product-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 </style>
