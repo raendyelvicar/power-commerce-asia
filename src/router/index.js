@@ -7,6 +7,7 @@ import HowToPay from "../views/HowToPay.vue";
 import ProductCatalog from "../views/ProductCatalog.vue";
 import DetailProduct from "../views/DetailProduct.vue";
 import Cart from "../views/Cart.vue";
+import Channel from "../views/Channel.vue";
 
 Vue.use(VueRouter);
 
@@ -62,6 +63,14 @@ const routes = [
     component: Cart,
     meta: {
       title: 'Power Commerce Asia - Cart',
+    }
+  },
+  {
+    path: "/channel",
+    name: "Channel",
+    component: Channel,
+    meta: {
+      title: 'Power Commerce Asia - Channel',
     }
   },
 ];

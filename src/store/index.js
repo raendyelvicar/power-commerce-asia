@@ -230,7 +230,7 @@ export default new Vuex.Store({
        } catch (error) {
         return console.error(error);
       } 
-    }
+    },
   },
 
   getters: {

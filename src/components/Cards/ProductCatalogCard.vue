@@ -7,7 +7,7 @@
       <div class="card-body p-2">
         <p class="product-title text-sm w-full">{{ product.name }}</p>
         <p
-          class="product-price text-sm font-bold flex justify-center items-center"
+          class="product-price text-sm font-bold flex justify-center items-center text-orange"
         >
           <WalletStar
             height="20px"

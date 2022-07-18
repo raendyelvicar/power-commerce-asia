@@ -35,6 +35,10 @@
           </a-menu-item>
         </a-menu-item-group>
       </a-sub-menu>
+
+      <a-menu-item key="channel">
+        <router-link to="/channel">Channel</router-link>
+      </a-menu-item>
     </a-menu>
     <LanguageSwitcher />
   </div>

@@ -135,8 +135,10 @@ export default {
       // Get the container element
       var btnContainer = document.getElementById("filter-section");
 
-      // Get all buttons with class="btn" inside the container
+      // Get all buttons with class="filter" inside the container
       var btns = btnContainer.getElementsByClassName("filter");
+
+      console.log(btns);
 
       this.isLoading = true;
       // Loop through the buttons and add the active class to the current/clicked button
