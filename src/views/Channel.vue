@@ -25,46 +25,128 @@
           id="channel-form"
         >
           <div
-            class="formSlide fade w-full m-4"
+            class="formSlide fade w-full"
             :style="[this.indexTab == 1 ? { display: 'block' } : null]"
           >
             <div class="group">
               <h3 class="form-title text-lg">Gudang</h3>
-              <input type="text" class="w-full" required />
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Pilih Klien</label>
+
+              <div class="select-holder">
+                <select class="select" type="text" placeholder=" ">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                </select>
+                <div class="placeholder">Pilih Klien</div>
+              </div>
             </div>
 
             <div class="group">
               <h3 class="form-title text-lg">Saluran</h3>
-              <div class="channel-group">
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
-                <img src="@/assets/images/channel/blibli.jpg" />
+              <div class="channel-group bg-blue-baby p-2">
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/shopee.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Shopee</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/tokopedia.png" />
+                  </div>
+                  <p class="font-bold text-base text-center">Tokopedia</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/bukalapak.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Bukalapak</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/lazada.png" />
+                  </div>
+                  <p class="font-bold text-base text-center">Lazada</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/zalora.png" />
+                  </div>
+                  <p class="font-bold text-base text-center">Zalora</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/zilingo.png" />
+                  </div>
+                  <p class="font-bold text-base text-center">Zilingo</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/jdid.png" />
+                  </div>
+                  <p class="font-bold text-base text-center">JD.ID</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
+                <div class="channel-container">
+                  <div class="channel-img">
+                    <img src="@/assets/images/channel/blibli.jpg" />
+                  </div>
+                  <p class="font-bold text-base text-center">Blibli</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div
-            class="formSlide fade w-full m-4"
-            :style="[this.indexTab == 1 ? { display: 'block' } : null]"
+            class="formSlide fade w-full"
+            :style="[this.indexTab == 2 ? { display: 'block' } : null]"
           ></div>
 
           <div class="flex flex-row justify-center items-center w-full">
@@ -207,18 +289,73 @@ export default {
   font-size: 24px;
 }
 
+.group {
+  margin-bottom: 30px;
+}
+
 .channel-group {
   display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px 2px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%;
-  margin: auto;
   height: 300px;
   overflow-y: scroll;
 }
 
-.channel-group img {
-  width: 70%;
+.channel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 165px;
+  width: 100%;
+}
+
+.channel-container .channel-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  height: 120px;
+  width: 100%;
+}
+
+.channel-container img {
+  object-fit: cover;
+  overflow-y: hidden;
+  height: auto;
+  width: 100%;
   margin: auto;
+  padding: 10px;
+}
+
+/*Styling select input*/
+.select-holder {
+  position: relative;
+  width: 100%;
+}
+
+select {
+  height: 40px;
+  font-size: 16px;
+  padding: 0px 10px;
+  border-radius: 4px;
+  border: 1px solid #bfbfbf;
+  width: 100%;
+  outline: none;
+}
+
+.placeholder {
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  padding: 0 8px;
+  background-color: white;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #bfbfbf;
+  font-size: 12px;
 }
 </style>
