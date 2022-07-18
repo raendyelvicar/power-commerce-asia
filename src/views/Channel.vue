@@ -295,7 +295,7 @@ export default {
 
 .channel-group {
   display: grid;
-  grid-gap: 30px 2px;
+  grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%;
   height: 300px;
@@ -307,7 +307,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 165px;
+  height: 120px;
   width: 100%;
 }
 
@@ -318,7 +318,7 @@ export default {
   align-items: center;
   border: 1px solid #bfbfbf;
   border-radius: 5px;
-  height: 120px;
+  height: 80px;
   width: 100%;
 }
 
