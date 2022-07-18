@@ -50,7 +50,7 @@
                   </div>
                   <p class="font-bold text-base text-center">Shopee</p>
                 </div>
-                <div class="channel-container">
+                <div class="channel-container active">
                   <div class="channel-img">
                     <img src="@/assets/images/channel/tokopedia.png" />
                   </div>
@@ -295,7 +295,7 @@ export default {
 
 .channel-group {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 25px 20px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%;
   height: 300px;
@@ -307,7 +307,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
+  height: 110px;
   width: 100%;
 }
 
@@ -320,6 +320,15 @@ export default {
   border-radius: 5px;
   height: 80px;
   width: 100%;
+  cursor: pointer;
+}
+
+.channel-container.active > .channel-img {
+  border-color: #111111;
+}
+
+.channel-container.active > p {
+  color: red;
 }
 
 .channel-container img {
