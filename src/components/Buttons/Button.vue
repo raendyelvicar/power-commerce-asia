@@ -1,10 +1,5 @@
 <template lang="">
-  <button
-    class="button"
-    type="button"
-    @click="clickableEvent"
-    :style="cssProps"
-  >
+  <button class="button" :type="type" @click="clickableEvent" :style="cssProps">
     <slot name="icon"> </slot>
     {{ cta }}
   </button>
@@ -20,6 +15,7 @@ export default {
     "borderColor",
     "bgHover",
     "icon",
+    "type",
   ],
   methods: {
     clickableEvent() {

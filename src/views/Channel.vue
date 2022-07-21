@@ -11,6 +11,7 @@
       @clickableEvent="showModal(true)"
     >
     </Button>
+
     <a-modal
       title="Tambah Toko"
       centered
@@ -32,7 +33,7 @@
               <h3 class="form-title text-lg">Gudang</h3>
 
               <div class="select-holder">
-                <select class="select" type="text" placeholder=" ">
+                <select class="select" v-model="dataForm.clientName">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
@@ -44,101 +45,17 @@
             <div class="group">
               <h3 class="form-title text-lg">Saluran</h3>
               <div class="channel-group bg-blue-baby p-2">
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/shopee.jpg" />
+                <div
+                  class="channel-container"
+                  v-for="item in channel"
+                  :key="item.id"
+                  :id="'channel-' + item.id"
+                  @click="selectChannel(item.id)"
+                >
+                  <div class="channel-img bg-white">
+                    <img :src="item.src" :alt="item.alt" />
                   </div>
-                  <p class="font-bold text-base text-center">Shopee</p>
-                </div>
-                <div class="channel-container active">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/tokopedia.png" />
-                  </div>
-                  <p class="font-bold text-base text-center">Tokopedia</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/bukalapak.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Bukalapak</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/lazada.png" />
-                  </div>
-                  <p class="font-bold text-base text-center">Lazada</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/zalora.png" />
-                  </div>
-                  <p class="font-bold text-base text-center">Zalora</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/zilingo.png" />
-                  </div>
-                  <p class="font-bold text-base text-center">Zilingo</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/jdid.png" />
-                  </div>
-                  <p class="font-bold text-base text-center">JD.ID</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
-                </div>
-                <div class="channel-container">
-                  <div class="channel-img">
-                    <img src="@/assets/images/channel/blibli.jpg" />
-                  </div>
-                  <p class="font-bold text-base text-center">Blibli</p>
+                  <p class="font-bold text-base text-center">{{ item.name }}</p>
                 </div>
               </div>
             </div>
@@ -147,11 +64,196 @@
           <div
             class="formSlide fade w-full"
             :style="[this.indexTab == 2 ? { display: 'block' } : null]"
-          ></div>
+          >
+            <div
+              class="desktop container flex flex-row justify-center items-center"
+            >
+              <div class="left w-50 p-4">
+                <img :src="dataForm.channel ? dataForm.channel.src : '#'" />
+              </div>
+              <div class="right w-50">
+                <div class="group">
+                  <div class="input-holder">
+                    <input
+                      class="input"
+                      type="text"
+                      v-model="dataForm.storeName"
+                    />
+                    <div class="placeholder">Nama Toko</div>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="input-holder">
+                    <input
+                      class="input"
+                      type="text"
+                      v-model="dataForm.urlStore"
+                    />
+                    <div class="placeholder">URL Toko</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <div
+                    class="wrapper flex flex-row justify-evenly items-center p-2"
+                  >
+                    <label class="label-container">
+                      Official Store
+                      <input
+                        type="radio"
+                        name="picked"
+                        class="mr-2"
+                        value="official-store"
+                        v-model="dataForm.type"
+                      />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="label-container">
+                      Power Merchant
+                      <input
+                        type="radio"
+                        name="picked"
+                        class="mr-2"
+                        value="power-merchant"
+                        v-model="dataForm.type"
+                      />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="group text-xs font-bold">
+                  <p class="mb-4">
+                    Langkah-langkah integrasi Toko
+                    {{
+                      this.dataForm.channel ? this.dataForm.channel.name : ""
+                    }}
+                  </p>
+                  <table>
+                    <tr>
+                      <td>1.</td>
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit nisi
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit nisi
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mobile container flex flex-col justify-center items-center"
+            >
+              <div class="left p-4">
+                <img :src="dataForm.channel ? dataForm.channel.src : '#'" />
+              </div>
+              <div class="right">
+                <div class="group">
+                  <div class="input-holder">
+                    <input
+                      class="input"
+                      type="text"
+                      v-model="dataForm.storeName"
+                    />
+                    <div class="placeholder">Nama Toko</div>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="input-holder">
+                    <input
+                      class="input"
+                      type="text"
+                      v-model="dataForm.urlStore"
+                    />
+                    <div class="placeholder">URL Toko</div>
+                  </div>
+                </div>
+                <div class="group">
+                  <div
+                    class="wrapper flex flex-row justify-evenly items-centers"
+                  >
+                    <label class="label-container text-sm">
+                      Official Store
+                      <input
+                        type="radio"
+                        name="picked"
+                        class="mr-2"
+                        value="official-store"
+                        v-model="dataForm.type"
+                      />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="label-container text-sm">
+                      Power Merchant
+                      <input
+                        type="radio"
+                        name="picked"
+                        class="mr-2"
+                        value="power-merchant"
+                        v-model="dataForm.type"
+                      />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="group text-xs font-bold">
+                  <p class="mb-4">
+                    Langkah-langkah integrasi Toko
+                    {{
+                      this.dataForm.channel ? this.dataForm.channel.name : ""
+                    }}
+                  </p>
+                  <table>
+                    <tr>
+                      <td>1.</td>
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit nisi
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit nisi
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>
+                        Aliquip magna minim ipsum non ullamco magna ea pariatur
+                        officia cupidatat velit
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="flex flex-row justify-center items-center w-full">
             <Button
-              :cta="cancelBtn"
+              :cta="formStatus == 0 ? 'Batal' : 'Kembali'"
+              type="button"
               bgColor="transparent"
               borderColor="transparent"
               textColor="#ff0000"
@@ -161,7 +263,8 @@
               @clickableEvent="nextTab(-1)"
             />
             <Button
-              :cta="nextBtn"
+              :cta="formStatus == 2 ? 'Submit' : 'Selanjutnya'"
+              type="button"
               bgColor="#ff0000"
               borderColor="#ff0000"
               bgHover="#ff3636"
@@ -174,10 +277,66 @@
         </form>
       </div>
     </a-modal>
+
+    <a-modal
+      centered
+      :visible="afterSubmit"
+      :footer="null"
+      :width="400"
+      @cancel="showMessage(false)"
+    >
+      <div class="flex flex-col justify-center items-center w-full m-auto">
+        <div
+          class="content w-full text-center flex flex-col justify-center items-center my-2"
+        >
+          <img
+            class="w-50 mb-4"
+            src="@/assets/images/success-icon.png"
+            alt="success"
+          />
+          <div class="p">
+            <h2 class="text-xl font-medium">Request Terkirim</h2>
+            <p class="text-sm text-grey mb-4">
+              Request anda sedang dalam proses mohon untuk menunggu dan akan ada
+              email konfirmasi persetujuan integrasi dari toko ke email toko
+              anda
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center items-center w-full">
+          <Button
+            cta="Tambah Toko Lain"
+            type="button"
+            bgColor="#ff0000"
+            borderColor="#ff0000"
+            bgHover="#ff3636"
+            textColor="#ffffff"
+            class="flex justify-center items-center text-base w-full mx-2 my-2"
+            @clickableEvent="
+              () => {
+                showMessage(false);
+                showModal(true);
+              }
+            "
+          />
+          <Button
+            cta="Selesai"
+            type="button"
+            bgColor="transparent"
+            borderColor="transparent"
+            textColor="#ff0000"
+            bgHover="#dbdbdb"
+            class="flex justify-center items-center text-base w-full mx-2"
+            @clickableEvent="showMessage(false)"
+          />
+        </div>
+      </div>
+    </a-modal>
   </div>
 </template>
 <script>
 import Button from "@/components/Buttons/Button";
+import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -189,6 +348,108 @@ export default {
       indexTab: 1,
       cancelBtn: "",
       nextBtn: "",
+      formStatus: 0,
+      typeBtn: "button",
+      afterSubmit: false,
+      channel: [
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Shopee",
+          src: require("@/assets/images/channel/shopee.jpg"),
+          alt: "Shopee Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Tokopedia",
+          src: require("@/assets/images/channel/tokopedia.png"),
+          alt: "Tokopedia Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Blibli",
+          src: require("@/assets/images/channel/blibli.jpg"),
+          alt: "Blibli Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Bukalapak",
+          src: require("@/assets/images/channel/bukalapak.jpg"),
+          alt: "",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Lazada",
+          src: require("@/assets/images/channel/lazada.png"),
+          alt: "Lazada Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Zalora",
+          src: require("@/assets/images/channel/zalora.png"),
+          alt: "Zalora Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Zilingo",
+          src: require("@/assets/images/channel/zilingo.png"),
+          alt: "Zilingo Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "JD.ID",
+          src: require("@/assets/images/channel/jdid.png"),
+          alt: "JD.ID Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Shopee",
+          src: require("@/assets/images/channel/shopee.jpg"),
+          alt: "Shopee Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Tokopedia",
+          src: require("@/assets/images/channel/tokopedia.png"),
+          alt: "Tokopedia Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Shopee",
+          src: require("@/assets/images/channel/shopee.jpg"),
+          alt: "Shopee Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Blibli",
+          src: require("@/assets/images/channel/blibli.jpg"),
+          alt: "Blibli Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "JD.ID",
+          src: require("@/assets/images/channel/jdid.png"),
+          alt: "JD.ID Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Blibli",
+          src: require("@/assets/images/channel/blibli.jpg"),
+          alt: "Blibli Logo",
+        },
+        {
+          id: Math.floor(Math.random() * 100000),
+          name: "Tokopedia",
+          src: require("@/assets/images/channel/tokopedia.png"),
+          alt: "Tokopedia Logo",
+        },
+      ],
+      dataForm: {
+        storeName: null,
+        urlStore: null,
+        clientName: null,
+        type: null,
+        channel: null,
+      },
     };
   },
   computed: {
@@ -196,76 +457,141 @@ export default {
   },
   methods: {
     ...mapActions(["showModal"]),
+
     nextTab(n) {
-      this.indexTab += n;
-
-      var tab = document.getElementsByClassName("formSlide");
-
-      if (this.indexTab > tab.length) {
-        //...the form gets submitted:
-        document.getElementById("channel-form").submit();
-        return false;
-      } else if (this.indexTab < 1) {
-        this.showModal(false);
-        this.indexTab = 1;
-      }
-
-      this.showTab(this.indexTab);
-    },
-    showTab(n) {
-      let i;
       let slides = document.getElementsByClassName("formSlide");
 
-      if (n > slides.length) {
+      let form = this.validateForm();
+
+      this.indexTab += n;
+
+      if (this.indexTab < 1) {
+        this.showModal(false);
         this.indexTab = 1;
-      }
-      if (n < 1) {
-        this.indexTab = slides.length;
+      } else if (this.indexTab == 1) {
+        this.formStatus = 0;
+      } else if (this.indexTab > 1 && this.indexTab < slides.length) {
+        this.formStatus = 1;
+      } else if (this.indexTab == slides.length) {
+        this.formStatus = 2;
+      } else if (this.indexTab > slides.length && form.status) {
+        this.onSubmit(event);
+        this.indexTab = 1;
+        this.showModal(false);
+        return true;
+      } else {
+        this.indexTab -= 1;
       }
 
-      if (n == slides.length) {
-        this.cancelBtn = "Kembali";
-        this.nextBtn = "Sambungkan";
-      } else if (n > 1 && n < slides.length) {
-        this.cancelBtn = "Kembali";
-        this.nextBtn = "Selanjutnya";
-      } else if (n == 1) {
-        this.cancelBtn = "Batal";
-        this.nextBtn = "Selanjutnya";
-      }
+      return false;
     },
+
+    selectChannel(id) {
+      // Get the container element
+      var channel = document.getElementById("channel-" + id);
+      var current = document.querySelector(".channel-container.active");
+
+      if (current) {
+        current.className = current.className.replace(" active", "");
+      }
+      channel.classList.add("active");
+
+      let findChannel = this.channel.find((ch) => ch.id == id);
+      this.dataForm.channel = findChannel;
+    },
+
     validateForm() {
-      // This function deals with validation of the form fields
-      var x,
-        y,
-        i,
-        valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[this.currentTab].getElementsByTagName("input");
-      // A loop that checks every input field in the current tab:
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false:
-          valid = false;
-        }
+      let response = {
+        status: false,
+        message: [],
+      };
+
+      if (!this.dataForm.clientName) {
+        response.message.push("Please Choose a Client Name");
+      } else if (!this.dataForm.channel) {
+        response.message.push("Please Choose a Channel");
+      } else if (!this.dataForm.storeName) {
+        response.message.push("Please Add a Store Name");
+      } else if (!this.dataForm.urlStore) {
+        response.message.push("Please Add a URL Store");
+      } else if (!this.dataForm.type) {
+        response.message.push("Please Add a Store Type");
+      } else {
+        response.status = true;
+        response.message = [];
       }
-      // If the valid status is true, mark the step as finished and valid:
-      if (valid) {
-        document.getElementsByClassName("step")[this.currentTab].className +=
-          " finish";
+
+      return response;
+    },
+
+    async onSubmit(e) {
+      try {
+        await axios
+          .post(
+            "https://626b682ce5274e6664cba68e.mockapi.io/api/v1/store",
+            this.dataForm
+          )
+          .then((response) => {
+            this.resetAll();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        return console.error(error);
       }
-      return valid; // return the valid status
+
+      e.preventDefault();
+    },
+
+    resetAll() {
+      this.showModal(false);
+      this.indexTab = 1;
+      this.formStatus = 0;
+      this.dataForm = {
+        storeName: null,
+        urlStore: null,
+        clientName: null,
+        type: null,
+        channel: null,
+      };
+
+      var current = document.querySelector(".channel-container.active");
+      if (current) {
+        current.className = current.className.replace(" active", "");
+      }
+
+      this.showMessage(true);
+    },
+
+    showMessage(state) {
+      this.afterSubmit = state;
+    },
+
+    createSubHeader() {
+      const div = document.createElement("div");
+      div.classList.add("subheader", "text-xs", "font-regular", "text-grey");
+      div.innerHTML = "Pilih saluran untuk diintegrasikan ke toko Anda";
+      document.querySelector("div.ant-modal-header").appendChild(div);
     },
   },
-  beforeMount() {
-    this.showTab(this.indexTab);
-  },
+  mounted() {},
 };
 </script>
 <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  height: 40px;
+  vertical-align: top;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: justify;
+}
+
 .formSlide {
   display: none;
 }
@@ -341,12 +667,14 @@ export default {
 }
 
 /*Styling select input*/
-.select-holder {
+.select-holder,
+.input-holder {
   position: relative;
   width: 100%;
 }
 
-select {
+select,
+input {
   height: 40px;
   font-size: 16px;
   padding: 0px 10px;
@@ -362,9 +690,77 @@ select {
   left: 8px;
   padding: 0 8px;
   background-color: white;
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
   color: #bfbfbf;
   font-size: 12px;
+}
+
+/*Styling radio button*/
+.label-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.label-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #ffffff;
+  border: 2px solid #929292;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.label-container:hover input ~ .checkmark {
+  background-color: #ff000;
+}
+
+/* When the radio button is checked, add a blue background */
+.label-container input:checked ~ .checkmark {
+  border: 5px solid #ff0000;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  /*Styling radio button*/
+  .label-container {
+    padding-left: 25px;
+    margin-bottom: 12px;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    height: 18px;
+    width: 18px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
 }
 </style>
