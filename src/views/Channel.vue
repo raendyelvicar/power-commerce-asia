@@ -44,7 +44,7 @@
 
             <div class="group">
               <h3 class="form-title text-lg">Saluran</h3>
-              <div class="channel-group bg-blue-baby p-2">
+              <div class="channel-group p-2">
                 <div
                   class="channel-container"
                   v-for="item in channel"
@@ -55,7 +55,7 @@
                   <div class="channel-img bg-white">
                     <img :src="item.src" :alt="item.alt" />
                   </div>
-                  <p class="font-bold text-base text-center">{{ item.name }}</p>
+                  <p class="text-base">{{ item.name }}</p>
                 </div>
               </div>
             </div>
@@ -635,6 +635,17 @@ td {
   align-items: center;
   height: 110px;
   width: 100%;
+  background-color: #ebecf0;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.channel-container p {
+  width: 100%;
+  color: #929292;
+  padding: 2px;
+  margin-left: 5px;
 }
 
 .channel-container .channel-img {
@@ -642,19 +653,17 @@ td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #bfbfbf;
-  border-radius: 5px;
   height: 80px;
   width: 100%;
-  cursor: pointer;
 }
 
-.channel-container.active > .channel-img {
-  border-color: #111111;
+.channel-container.active {
+  background-color: #ff0954;
+  border: 2px solid #ff0954;
 }
 
 .channel-container.active > p {
-  color: red;
+  color: white;
 }
 
 .channel-container img {
