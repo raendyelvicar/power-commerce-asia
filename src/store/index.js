@@ -101,12 +101,10 @@ export default new Vuex.Store({
       let currentProduct = state.products.find(p => p.id === product.id);
 
       if(item){
-        item.quantity++;
+        this.setQuantityItem(currentProduct, "increase");
       } else {
         state.cart.push({...product, quantity:1});
       }
-
-      currentProduct.stock--;
     },
 
     setQuantityItem(state, { product, opt }){

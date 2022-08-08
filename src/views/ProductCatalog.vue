@@ -37,8 +37,7 @@ export default {
   methods: {
     ...mapActions(["fetchAllProducts", "changeCurrentPage"]),
     onPageChange(page) {
-      this.changeCurrentPage(page);
-      this.fetchAllProducts();
+      compose(this.fetchAllProducts, this.changeCurrentPage)(page);
     },
     onShowSizeChange(current, pageSize) {
       console.log(current, pageSize);

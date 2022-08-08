@@ -1,9 +1,9 @@
 <template>
-  <Layout>
-    <div id="app font-open-sans">
+  <div id="app font-open-sans">
+    <Layout>
       <router-view />
-    </div>
-  </Layout>
+    </Layout>
+  </div>
 </template>
 
 <script>

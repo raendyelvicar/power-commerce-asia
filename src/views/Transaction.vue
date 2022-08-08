@@ -133,18 +133,18 @@ export default {
     },
     filterTransactionsByStatus(status) {
       // Get the container element
-      var btnContainer = document.getElementById("filter-section");
+      let btnContainer = document.getElementById("filter-section");
 
       // Get all buttons with class="filter" inside the container
-      var btns = btnContainer.getElementsByClassName("filter");
+      let btns = btnContainer.getElementsByClassName("filter");
 
       console.log(btns);
 
       this.isLoading = true;
       // Loop through the buttons and add the active class to the current/clicked button
-      for (var i = 0; i < btns.length; i++) {
+      for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
-          var current = document.getElementsByClassName("active");
+          let current = document.getElementsByClassName("active");
           current[0].className = current[0].className.replace(" active", "");
           this.className += " active";
         });

@@ -312,12 +312,7 @@
             bgHover="#ff3636"
             textColor="#ffffff"
             class="flex justify-center items-center text-base w-full mx-2 my-2"
-            @clickableEvent="
-              () => {
-                showMessage(false);
-                showModal(true);
-              }
-            "
+            @clickableEvent="compose(showMessage(false), showModal(true))"
           />
           <Button
             cta="Selesai"
@@ -488,8 +483,8 @@ export default {
 
     selectChannel(id) {
       // Get the container element
-      var channel = document.getElementById("channel-" + id);
-      var current = document.querySelector(".channel-container.active");
+      let channel = document.getElementById("channel-" + id);
+      let current = document.querySelector(".channel-container.active");
 
       if (current) {
         current.className = current.className.replace(" active", "");
@@ -556,7 +551,7 @@ export default {
         channel: null,
       };
 
-      var current = document.querySelector(".channel-container.active");
+      let current = document.querySelector(".channel-container.active");
       if (current) {
         current.className = current.className.replace(" active", "");
       }
@@ -569,7 +564,7 @@ export default {
     },
 
     createSubHeader() {
-      const div = document.createElement("div");
+      let div = document.createElement("div");
       div.classList.add("subheader", "text-xs", "font-regular", "text-grey");
       div.innerHTML = "Pilih saluran untuk diintegrasikan ke toko Anda";
       document.querySelector("div.ant-modal-header").appendChild(div);

@@ -1,6 +1,6 @@
 <template lang="">
   <div id="layout">
-    <Navbar id="nav"> </Navbar>
+    <Navbar id="nav"></Navbar>
     <slot />
   </div>
 </template>
@@ -33,11 +33,9 @@ body {
 
 #nav {
   padding: 20px 10px;
+  margin-bottom: 20px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  display: block;
   align-items: center;
 }
 
