@@ -747,6 +747,19 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
+  div.ant-modal-body,
+  div.ant-modal-header {
+    padding: 15px;
+  }
+
+  .channel-container img {
+    padding: 8px;
+  }
+
+  .group {
+    margin-bottom: 20px;
+  }
+
   /*Styling radio button*/
   .label-container {
     padding-left: 25px;

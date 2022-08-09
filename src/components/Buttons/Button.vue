@@ -1,6 +1,6 @@
 <template lang="">
   <button class="button" :type="type" @click="clickableEvent" :style="cssProps">
-    <slot name="icon"> </slot>
+    <slot name="icon"></slot>
     {{ cta }}
   </button>
 </template>
@@ -49,9 +49,9 @@ export default {
   background-color: var(--bg-hover-color);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 375px) {
   .button {
-    padding: 5px 10px;
+    padding: 6px 20px;
   }
 }
 </style>
