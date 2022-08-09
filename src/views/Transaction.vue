@@ -234,7 +234,6 @@ export default {
 <style>
 .transaction {
   margin-bottom: 50px;
-  margin: auto;
 }
 
 .title {

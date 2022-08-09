@@ -47,21 +47,21 @@
     </div>
     <div class="mobile flex flex-col justify-center items-center">
       <a-icon type="menu" @click="showMenu" style="padding-left: 10px" />
-      <div class="menu" :class="[this.menuState ? 'hidden' : '']">
+      <div class="menu" :class="[this.menuState ? '' : 'hidden']">
         <a-menu v-model="current" mode="inline">
-          <a-menu-item key="home" style="padding-left: 0px">
+          <a-menu-item key="home" style="padding-left: 0px" @click="showMenu">
             <router-link to="/">Beranda</router-link>
           </a-menu-item>
 
           <a-sub-menu>
             <span slot="title" class="submenu-title-wrapper"> Produk</span>
             <a-menu-item-group>
-              <a-menu-item key="product:1">
+              <a-menu-item key="product:1" @click="showMenu">
                 <router-link to="/catalog"
                   >Katalog Produk</router-link
                 ></a-menu-item
               >
-              <a-menu-item key="product:2">
+              <a-menu-item key="product:2" @click="showMenu">
                 <router-link to="/cart">Keranjang</router-link></a-menu-item
               >
             </a-menu-item-group>
@@ -70,23 +70,27 @@
           <a-sub-menu>
             <span slot="title" class="submenu-title-wrapper"> Transaksi</span>
             <a-menu-item-group>
-              <a-menu-item key="transactions:1">
+              <a-menu-item key="transactions:1" @click="showMenu">
                 <router-link to="/transactions"
                   >Daftar Transaksi</router-link
                 ></a-menu-item
               >
-              <a-menu-item key="transactions:2">
+              <a-menu-item key="transactions:2" @click="showMenu">
                 <router-link to="/payment-list"
                   >Menunggu Pembayaran</router-link
                 ></a-menu-item
               >
-              <a-menu-item key="transactions:3">
+              <a-menu-item key="transactions:3" @click="showMenu">
                 <router-link to="/how-to-pay">Cara Pembayaran</router-link>
               </a-menu-item>
             </a-menu-item-group>
           </a-sub-menu>
 
-          <a-menu-item key="channel" style="padding-left: 0px">
+          <a-menu-item
+            key="channel"
+            style="padding-left: 0px"
+            @click="showMenu"
+          >
             <router-link to="/channel">Channel</router-link>
           </a-menu-item>
         </a-menu>

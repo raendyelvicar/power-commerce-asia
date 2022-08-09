@@ -55,7 +55,6 @@ li {
 
 .product-catalog {
   margin-bottom: 50px;
-  margin: auto;
 }
 
 .product-container {

@@ -52,7 +52,6 @@ export default {
 </script>
 <style>
 .how-to-pay {
-  margin: auto;
   margin-bottom: 20px;
 }
 

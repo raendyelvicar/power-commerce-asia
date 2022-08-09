@@ -48,7 +48,6 @@ export default {
 <style>
 .payment-list {
   margin-bottom: 50px;
-  margin: auto;
 }
 
 .title {
